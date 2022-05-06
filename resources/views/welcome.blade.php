@@ -35,7 +35,7 @@
                     @endauth
                 </div>
             @endif
-
+      <h1> welcome page 1</h1>
         </div>
     </body>
 </html>
