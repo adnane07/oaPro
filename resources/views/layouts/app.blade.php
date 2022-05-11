@@ -53,28 +53,30 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('gerer') }}">
+                                <img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/>
+                                 {{ __('Gérer la reservation') }}
+                            </a>
+                        </li>
                         @guest
+
                             @if (Route::has('login'))
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/> {{ __('Gérer la reservation') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{ route('login') }}"><img src="https://img.icons8.com/wired/30/000000/admin-settings-male.png"/> {{ __('Admin') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}"><img src="https://img.icons8.com/wired/30/000000/login-rounded-right.png"/> {{ __('Se Connecter') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">
+                                        <img src="https://img.icons8.com/wired/30/000000/login-rounded-right.png"/>
+                                         {{ __('Se Connecter') }}
+                                    </a>
                                 </li>
 
                             @endif
 
                             @else
-                            <li class="nav-item">
-                                    <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/> {{ __('Gérer la reservation') }}</a>
-                            </li>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                        <img src="https://img.icons8.com/bubbles/35/000000/user.png"/>
+                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -168,9 +170,12 @@
                      </div>
 
                     <div>
-                        <a href="www.instagram.com"><img src="https://img.icons8.com/ios/20/000000/instagram-new--v1.png"/></a>
-                        <a href="www.facebook.com">  <img src="https://img.icons8.com/ios/20/000000/facebook-new.png"/></a>
-                        <a href="www.youtube.com">  <img src="https://img.icons8.com/ios/25/000000/youtube-play--v1.png"/></a>
+                        <a target="_blank" href="www.instagram.com">
+                            <img src="https://img.icons8.com/ios/20/000000/instagram-new--v1.png"/></a>
+                        <a target="_blank" href="https://web.facebook.com/oasisgarden2/">
+                            <img src="https://img.icons8.com/ios/20/000000/facebook-new.png"/></a>
+                        <a target="_blank" href="www.youtube.com">
+                            <img src="https://img.icons8.com/ios/25/000000/youtube-play--v1.png"/></a>
                     </div>
 
                     <div>
