@@ -19,8 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
-<header>
+
+<body>
+  <header>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -97,17 +100,15 @@
                 </div>
             </div>
         </nav>
-</header>
-<body>
+  </header>
+    <main class="container">
 
-    <main class="py-4">
             @yield('content')
+
     </main>
+  <footer>
 
-</body>
-<footer>
-
-    <div id="app">
+    <div id="app" class="fixed-bottom">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
@@ -170,11 +171,11 @@
                      </div>
 
                     <div>
-                        <a target="_blank" href="www.instagram.com">
+                        <a target="_blank" href="https://www.instagram.com">
                             <img src="https://img.icons8.com/ios/20/000000/instagram-new--v1.png"/></a>
                         <a target="_blank" href="https://web.facebook.com/oasisgarden2/">
                             <img src="https://img.icons8.com/ios/20/000000/facebook-new.png"/></a>
-                        <a target="_blank" href="www.youtube.com">
+                        <a target="_blank" href="https://www.youtube.com">
                             <img src="https://img.icons8.com/ios/25/000000/youtube-play--v1.png"/></a>
                     </div>
 
@@ -184,5 +185,7 @@
                 </div>
         </nav>
     </div>
-</footer>
+  </footer>
+</body>
+
 </html>
