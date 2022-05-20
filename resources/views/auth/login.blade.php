@@ -1,28 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container " style="margin-top: 4%;">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="border border-1 border-white rounded" style="padding: 6%">
 
-
-                <div class="card-body">
+                <div class="card-body text-white">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        <div class="form-floating col-md-6 row mb-3 ">
+                            <input type="email" id="floatingInput"
+                             class="form-control @error('email') is-invalid @enderror"
+                             placeholder="name@example.com" name="email" value="{{ old('email') }}"
+                             required autocomplete="email" >
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                             <label for="floatingInput">{{ __('Email Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" >
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+
                         </div>
 
                         <div class="row mb-3">
