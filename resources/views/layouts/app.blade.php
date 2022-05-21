@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- flatpickr -->
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -99,7 +103,7 @@
             </div>
         </nav>
   </header>
-<body style="background-color:rgb(150, 151, 116)">
+
 
     <main class="py-4" >
 
@@ -107,7 +111,7 @@
 
     </main>
 
-</body>
+
   <footer class="fixed-bottom">
 
     <div id="app" >
