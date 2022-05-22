@@ -11,18 +11,29 @@
 
                 <form action="#">
                     @csrf
+
                     <div class="col-md-6 offset-md-3 row mb-3">
-                        <input type="text" class="form-control" placeholder="select une date">
+                        <input type="email" name="email"
+                        class="form-control" value="{{ old('email') }}"
+                        id="inpu" required
+                        placeholder="E-mail">
                     </div>
 
                     <div class="col-md-6 offset-md-3 row mb-3">
-                        <button class="btn btn-success" type="submit"><i class="bi bi-search"></i> Soumettre</button>
+                        <input type="text" name="IdReservation"
+                        class="form-control"
+                        id="inpu" required
+                        placeholder="ID reservation">
+                    </div>
 
+                    <div class="col-md-6 offset-md-3 row mb-3">
+                        <button class="btn btn-success" type="submit">Soumettre</button>
                     </div>
 
                 </form>
 
-            </div></div></div>
+            </div>
+        </div></div>
 
         </div>
     </body>

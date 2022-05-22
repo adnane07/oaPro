@@ -5,10 +5,12 @@
      border-bottom:1px white solid !important;
      border-radius: 0;
      padding-left: 0;}
+
+#inpu:focus{border: 1px green solid !important;}
  #email:focus,#password:focus {
     outline:none;border: transparent;
 }
-#email:focus,#password:focus {
+#email:focus,#password:focus,#inpu:focus {
     outline: 0px !important;
     -webkit-appearance: none;
     box-shadow: none !important
