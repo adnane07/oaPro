@@ -5,6 +5,9 @@
      border-bottom:1px white solid !important;
      border-radius: 0;
      padding-left: 0;}
+     #T1:-webkit-autofill {
+        background: #fff !important;
+    }
 
 #inpu:focus{border: 1px green solid !important;}
  #email:focus,#password:focus {

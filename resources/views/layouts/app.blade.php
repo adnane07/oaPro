@@ -122,7 +122,10 @@
                  <table>
                   <tr>
                     <th><img src="https://img.icons8.com/ios/18/000000/place-marker--v1.png " /></th>
-                    <th> <a style="text-decoration: none; color:black" target="_blank" href="https://www.google.com/maps/place/Espace+Oasis/@33.0215191,-7.62312,17z/data=!4m5!3m4!1s0xda605ba11e0ea21:0x89fcd14e1598df5!8m2!3d33.0218654!4d-7.6230449">route casablanca settat, 26000 Settat, Maroc</a> </th>
+                    <th> <a style="text-decoration: none; color:black"
+                        target="_blank"
+                        href="https://www.google.com/maps/place/Espace+Oasis/@33.0215191,-7.62312,17z/data=!4m5!3m4!1s0xda605ba11e0ea21:0x89fcd14e1598df5!8m2!3d33.0218654!4d-7.6230449">
+                        route casablanca settat, 26000 Settat, Maroc</a> </th>
                   </tr>
                   <tr>
                     <th><img  src = " https://img.icons8.com/external-dreamstale-lineal-dreamstale/18/000000/external-telephone-communication-dreamstale-lineal-dreamstale-1.png " /></th>
@@ -137,31 +140,6 @@
                       Nous Contactez
                   </button>
 
-                   <!-- Modal -->
-            <form method="post" action={{"proj.php"}}>
-                    @csrf
-                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                         <div class="modal-body">
-
-                            <div class="mb-3">
-                               <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="mb-3">
-                               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-
-
-                        </div>
-                      <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-success">Envoyer</button>
-                       </div>
-                  </div>
-                </div>
-              </div>
-           </form>
           </div>
         </div>
         </nav>
