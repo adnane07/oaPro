@@ -1,12 +1,16 @@
 @extends('layouts.app')
     @section('content')
-        <body style=" background-color:rgb(150, 151, 116)">
+        <body style=" background-color:rgb(186, 242, 232)">
             <div class="container" style="margin-top: 4%;">
 
                 <div class="row justify-content-center">
                     <div class="col-md-7  ">
                         <div class="border border-1 border-white rounded" id="login" style="background-color: white">
+ 
+                        <h4 class="card-title offset-md-5" style="font-weight: bold; color:rgb(0, 128, 85)">Reserver</h4>
+
                         <h4 class="card-title" style="font-weight: bold; color:green; text-align: center">Reserver</h4>
+
 
                     <form method="POST" action="#">
                         @csrf
