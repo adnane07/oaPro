@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dispo');
+    return view('welcome');
 });
 
 
@@ -28,3 +28,11 @@ Route::get('/home', function () {
 Route::get('/gerer', function () {
     return view('gerer');
 })->name('gerer');
+
+Route::get('/dispo', function () {
+    return view('dispo');
+})->name('dispo');
+
+Route::get('/pdf', function () {
+    return view('pdf');
+})->name('pdf');
