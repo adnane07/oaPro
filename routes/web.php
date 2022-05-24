@@ -36,3 +36,11 @@ Route::get('/dispo', function () {
 Route::get('/pdf', function () {
     return view('pdf');
 })->name('pdf');
+
+Route::get('/annuler', function () {
+    return view('annuler');
+})->name('annuler');
+
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
