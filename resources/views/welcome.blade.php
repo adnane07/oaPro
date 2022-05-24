@@ -1,6 +1,6 @@
 @extends('layouts.app')
     @section('content')
-        <body style=" background-color:rgb(150, 237, 221)">
+        <body style=" background-color:rgb(186, 242, 232)">
             <div class="container" style="margin-top: 4%;">
 
                 <div class="row justify-content-center">
