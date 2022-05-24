@@ -6,7 +6,11 @@
                 <div class="row justify-content-center">
                     <div class="col-md-7  ">
                         <div class="border border-1 border-white rounded" id="login" style="background-color: white">
+ 
                         <h4 class="card-title offset-md-5" style="font-weight: bold; color:rgb(0, 128, 85)">Reserver</h4>
+
+                        <h4 class="card-title" style="font-weight: bold; color:green; text-align: center">Reserver</h4>
+
 
                     <form method="POST" action="#">
                         @csrf
@@ -27,12 +31,12 @@
                           </select>
                         </div>
 
-                        <div class="col-md-7 offset-md-3 row">
+                        <div class="col-md-6 offset-md-3 row">
                             <div class="col">
-                                <input class="btn btn-secondary" type="reset" value="Reset">
+                                <input class="btn btn-secondary float-start" type="reset" value="Reset">
                             </div>
                             <div class="col">
-                                <button class="btn btn-success" type="submit">Suivant <i class="bi bi-chevron-double-right"></i></button>
+                                <button class="btn btn-success float-end" type="submit">Suivant <i class="bi bi-chevron-double-right"></i></button>
                             </div>
 
                         </div>
@@ -71,10 +75,10 @@
              <div class="modal-body">
 
                 <div class="mb-3">
-                   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                   <input type="email" class="form-control" id="inpu" placeholder="name@example.com">
                 </div>
                 <div class="mb-3">
-                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                   <textarea class="form-control" id="inpu" rows="3"></textarea>
                 </div>
 
 

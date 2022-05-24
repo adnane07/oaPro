@@ -7,7 +7,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-7">
                     <div class="border border-1 border-white rounded" id="login" style="background-color: white">
-                    <h4 class="card-title offset-md-4" style="font-weight: bold; color:green">Gérer les réservations</h4>
+                    <h4 class="card-title" style="font-weight: bold; color:green; text-align: center">Gérer les réservations</h4>
 
                 <form method="POST" action="#">
                     @csrf
@@ -45,10 +45,10 @@
              <div class="modal-body">
 
                 <div class="mb-3">
-                   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                   <input type="email" class="form-control" id="inpu" placeholder="name@example.com">
                 </div>
                 <div class="mb-3">
-                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                   <textarea class="form-control" id="inpu" rows="3"></textarea>
                 </div>
 
 
