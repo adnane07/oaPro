@@ -1,4 +1,22 @@
 @extends('layouts.app')
+
+@section('history')
+
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('gerer') }}">
+        <img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/
+        28/000000/external-history-business-analytics-inipagistudio-mixed-inipagistudio.png"/>
+         {{ __('Historique de Reservation') }}
+    </a>
+</li>
+
+@endsection
+
+
+@section('accueil')
+    {{ url('/admin') }}
+@endsection
+
     @section('content')
 <body style=" background-color:rgb(150, 151, 116)">
     <div class="container" style="margin-top: 2%; ">
