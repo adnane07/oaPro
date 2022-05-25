@@ -28,15 +28,17 @@
             <td style="vertical-align: middle; text-align: center">hmed lamba</td>
             <td style="vertical-align: middle; text-align: center">+212 635001305</td>
             <td style="vertical-align: middle; text-align: center">lun ,25/05 20:00-21:00</td>
-            <td>
+            <td >
+              <div style=" text-align: center">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"  style="margin-left: 7%" data-bs-target="#confirmerModal">
-                    <i class="bi bi-check2-square"></i> Confirmer
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmerModal">
+                    <i class="bi bi-check2-square"></i>
                 </button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger"  data-bs-toggle="modal"  style="margin-left: 7%"  data-bs-target="#supprimerModal">
-                    <i class="bi bi-trash3"></i> Supprimer
+                <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#supprimerModal">
+                    <i class="bi bi-trash3"></i>
                   </button>
+              </div>
 
             <!-- Modal annulation-->
             <form method="POST" action="#">
@@ -45,13 +47,13 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain 3 lun 23/05 au 20:00
+                    <img src="https://img.icons8.com/doodle/40/000000/delete-sign.png"/> Supprimer Reservation de Terrain 3 pour lun 23/05 au 20:00
 
 
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-success">Valider</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
                   </div>
                 </div>
               </div>
@@ -78,14 +80,42 @@
              </div>
             </form>
 
-
-
             </td>
     </tr>
 
         </tbody>
       </table>
-    </div></div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+    <form method="post" action={{"proj.php"}}>
+        @csrf
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+             <div class="modal-body">
+
+                <div class="mb-3">
+                   <input type="email" class="form-control" id="inpu" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                   <textarea class="form-control" id="inpu" rows="3"></textarea>
+                </div>
+
+
+            </div>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-success">Envoyer</button>
+           </div>
+        </div>
+       </div>
+      </div>
+   </form>
+
+
 
 </body>
 
