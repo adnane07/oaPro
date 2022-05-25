@@ -101,6 +101,32 @@
       </table>
     </div></div>
 
+    <!-- Modal -->
+    <form method="post" action={{"proj.php"}}>
+        @csrf
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+             <div class="modal-body">
+
+                <div class="mb-3">
+                   <input type="email" class="form-control" id="inpu" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                   <textarea class="form-control" id="inpu" rows="3"></textarea>
+                </div>
+
+
+            </div>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-success">Envoyer</button>
+           </div>
+        </div>
+       </div>
+      </div>
+   </form>
+
 </body>
 
     @endsection
