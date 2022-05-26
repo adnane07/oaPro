@@ -22,6 +22,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
+});
+
 Route::get('/home', function () {
     return view('welcome');
 });
@@ -41,6 +46,6 @@ Route::get('/annuler', function () {
     return view('annuler');
 })->name('annuler');
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->name('admin');
