@@ -109,14 +109,14 @@
   </header>
 
 
-    <main class="py-4" >
+    <main class="py-4" style="margin-bottom: 3cm">
 
             @yield('content')
 
     </main>
 
 
-  <footer class="fixed-bottom">
+  <footer class="fixed-bottom" style="">
 
     <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

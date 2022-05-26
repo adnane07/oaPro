@@ -33,9 +33,9 @@ Route::get('/dispo', function () {
     return view('dispo');
 })->name('dispo');
 
-Route::get('/pdf', function () {
-    return view('pdf');
-})->name('pdf');
+Route::get('/uploadpdf', function () {
+    return view('uploadpdf');
+})->name('uploadpdf');
 
 Route::get('/annuler', function () {
     return view('annuler');
