@@ -62,7 +62,7 @@
                                     </tbody>
                                   </table>
                                   <div class="col-md-6 offset-md-3 row">
-                                    <a type="button" class="btn btn-warning" href="" style="color: black">
+                                    <a type="button" class="btn btn-warning" href="{{ Route('pdf') }}" style="color: black">
                                         <img src="https://img.icons8.com/ios/40/000000/export-pdf-2.png"/> Telecharger Pdf
                                     </a>
                                     </div>

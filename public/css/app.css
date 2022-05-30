@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
-#email,#password{background-color:rgb(150, 151, 116);
-     color:white;
+#email,#password{
+     background-color:rgb(150, 151, 116);
+     color: white;
      border-bottom:1px white solid !important;
      border-radius: 0;
      padding-left: 0;}
