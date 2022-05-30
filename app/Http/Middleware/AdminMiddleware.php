@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminMiddleware
 {
@@ -16,20 +17,25 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check())
-        {
-       
-            if(Auth::user()->role=='1'){
-return $next($request);
+    //    return $next($request);
+    // //    if(Auth::check()){
+    //     //    admin role 1
+    //        if( Auth::user()->isAdmin  ){
+    //         return $next($request);
+    //         return redirect()->back();
+    //       } 
+    if (Auth::user() &&  Auth::user()->isAdmin == 1) {
+      return $next($request);
+ }
 
-        }
-        else{
-            return redirect('home')->with('message','only for admin');
+ return redirect('home')->with('error','You have not admin access');
+        // else{
 
-        }
+// return redirect('/home')->with('message',' acces refuse ');
+//            }
 
-    }
-     
-       // return $next($request);
+    //    } else{
+    //     return redirect('/home');
+    //    }
     }
 }

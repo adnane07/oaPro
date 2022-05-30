@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +26,39 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
-    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+// admin section if ($request()->user() && request()->user()->isAdmin())
 
+Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
+    // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
+    Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
 });
+ 
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         return view('admin');
+
+//     });
+// });
+
+
+
+
+// Route::prefix('client')->middleware('auth','isClient')->group(function(){
+//     // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
+//     Route::get('/gerer', [App\Http\Controllers\ClientController::class, 'index'])->name('gerer');
+//     Route::get('/dispo', [App\Http\Controllers\ClientController::class, 'dispo'])->name('dispo');
+//     Route::get('/pdf', [App\Http\Controllers\ClientController::class, 'pdf'])->name('pdf');
+
+
+
+// });
+// Route::resource('admin',AdminController::class)->except([
+//     'gerer','dispo'
+// ])->middlware('auth');
+
+
+
 
 Route::get('/home', function () {
     return view('welcome');
@@ -38,9 +71,26 @@ Route::get('/dispo', function () {
     return view('dispo');
 })->name('dispo');
 
-Route::get('/pdf', function () {
-    return view('pdf');
-})->name('pdf');
+Route::get('/uploadpdf', function () {
+
+    $data["email"] = "elakhaladnane.07@gmail.com";
+        $data["title"] = "votre reçu de reservation OASIS";
+        $data["body"] = "this is demo";
+
+    $pdf = PDF::loadView('hello',$data);
+
+    Mail::send('pdf', $data , function($message)use($data , $pdf){
+
+        $message->to($data["email"])
+                ->subject($data["title"])
+                ->attachData($pdf->output(), "RecapilatifReserve.pdf");
+
+    });
+
+    return view('uploadpdf');
+})->name('uploadpdf');
+
+Route::get('pdf',[ App\Http\Controllers\PdfController::class,'pdf'])->name('pdf');
 
 Route::get('/annuler', function () {
     return view('annuler');
