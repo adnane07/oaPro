@@ -33,7 +33,7 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
     Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
 });
- 
+
 // Route::middleware(['first', 'second'])->group(function () {
 //     Route::get('/', function () {
 //         return view('admin');
@@ -72,7 +72,7 @@ Route::get('/dispo', function () {
 })->name('dispo');
 
 Route::get('/uploadpdf', function () {
- 
+
         $data["email"] = "elakhaladnane.07@gmail.com";
         $data["title"] = "votre reçu de reservation OASIS";
         $data["body"] = "this is demo";
@@ -118,10 +118,10 @@ Route::post('/contactez', function () {
     $details["body"] = request('message_env');
 
 
-Mail::send('pdf', $data , function($message)use($data){
+Mail::send('mailsend', $details , function($message)use($details){
 
-    $message->to($data["email"])
-            ->subject($data["title"]);
+    $message->to($details["email"])
+            ->subject($details["title"]);
 
 });
 
