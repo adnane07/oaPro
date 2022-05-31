@@ -26,6 +26,40 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// admin section if ($request()->user() && request()->user()->isAdmin())
+
+Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
+    // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
+    Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
+});
+ 
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         return view('admin');
+
+//     });
+// });
+
+
+
+
+// Route::prefix('client')->middleware('auth','isClient')->group(function(){
+//     // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
+//     Route::get('/gerer', [App\Http\Controllers\ClientController::class, 'index'])->name('gerer');
+//     Route::get('/dispo', [App\Http\Controllers\ClientController::class, 'dispo'])->name('dispo');
+//     Route::get('/pdf', [App\Http\Controllers\ClientController::class, 'pdf'])->name('pdf');
+
+
+
+// });
+// Route::resource('admin',AdminController::class)->except([
+//     'gerer','dispo'
+// ])->middlware('auth');
+
+
+
+
 Route::get('/home', function () {
     return view('welcome');
 });
@@ -62,6 +96,11 @@ Route::get('/annuler', function () {
     return view('annuler');
 })->name('annuler');
 
+
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->name('admin');
+=======
 Route::get('/admin', function () {
     return view('admin');
 })->name('admin');
@@ -82,3 +121,4 @@ Mail::send('pdf', $data , function($message)use($data){
 
 return view('welcome');
 })->name('contactez');
+
