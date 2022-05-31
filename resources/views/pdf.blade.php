@@ -32,7 +32,7 @@
                                     <td class="border-end">
                                         <div style="text-align: center; border-right: 1px solid black">
                                             <!-- insert your custom barcode setting your data in the GET parameter "data" -->
-                                            
+
                                             <img alt='Barcode Generator TEC-IT'
                                             src='https://barcode.tec-it.com/barcode.ashx?code=QRCode_Events&data=BEGIN%3AVEVENT%0ASUMMARY%3Aadnane%0ALOCATION%3A060514822%0ADESCRIPTION%3Aterrain+3%0ADTSTART%3A20220526T195800%0AEND%3AVEVENT&eclevel=M&dmsize=Default'/>
                                         </div>
