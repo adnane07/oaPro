@@ -103,7 +103,6 @@ Route::get('/annuler', function () {
 Route::get('/planning', function () {
     return view('planning');
 })->name('planning');
-
 Route::get('/admin', function () {
     return view('admin');
 })->name('admin');
