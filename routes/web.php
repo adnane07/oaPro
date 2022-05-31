@@ -109,7 +109,7 @@ Route::post('/contactez', function () {
     $details["title"] = request('email_emet');
     $details["body"] = request('message_env');
 
-Mail::send('mailsend', $details , function($message)use($details){
+Mail::send('mailsend',$details , function($message)use($details){
 
     $message->to($details["email"])
             ->subject($details["title"]);
