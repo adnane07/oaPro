@@ -42,7 +42,7 @@
                     </li>
 
                 </ul>
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="@yield('accueil')">
                     OASIS GARDEN
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -58,12 +58,16 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        @yield('history')
+
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('gerer') }}">
                                 <img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/>
                                  {{ __('Gérer la reservation') }}
                             </a>
                         </li>
+
                         @guest
 
                             @if (Route::has('login'))
@@ -105,14 +109,14 @@
   </header>
 
 
-    <main class="py-4" >
+    <main class="py-4" style="margin-bottom: 3cm">
 
             @yield('content')
 
     </main>
 
 
-  <footer class="fixed-bottom">
+  <footer class="fixed-bottom" style="">
 
     <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

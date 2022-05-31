@@ -1,9 +1,11 @@
 @extends('layouts.app')
-
+@section('accueil')
+    {{ url('/') }}
+@endsection
 @section('content')
 <body  style="background-color:rgb(150, 151, 116)">
 
-<div class="container" style="margin-top: 4%;">
+<div class="container" style="margin-top: 2%;">
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -49,6 +51,12 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="col-md-6 offset-md-3 mb-2">
+                            <input id="check" type="checkbox" class="check" name="remember" {{ old('remember') ? 'checked' : '' }}>
+						    <label for="check"><span class="icon"></span> Remember Me</label>
+					    </div>
+
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-3">
                                 Vous n'avez pas encore de compte ? <a href="{{ route('register') }}"
@@ -56,13 +64,22 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="row mb-2">
                             <div class="col-md-8 offset-md-5">
                                 <button type="submit" class="btn btn-success" style="width: 25%">
                                     {{ __('Connecter') }}
                                 </button>
                             </div>
                         </div>
+
+                             @if (Route::has('password.request'))
+                        <div class="offset-md-5  mb-0 foot-lnk">
+						    <a href="{{ route('password.request') }}" style="font-weight: bold ;color: rgb(7, 128, 7)">Mot de passe oublier ?</a>
+				     	</div>
+
+
+
+					@endif
                     </form>
                 </div>
             </div>
