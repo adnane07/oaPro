@@ -102,7 +102,7 @@ Route::get('/annuler', function () {
 // })->name('admin');
 
 
-
+//mail
 Route::post('/contactez', function () {
 
     $details["email"] = "oasisgarden10@gmail.com";
