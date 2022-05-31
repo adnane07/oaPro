@@ -99,3 +99,6 @@ Route::get('/annuler', function () {
 // Route::get('/admin', function () {
 //     return view('admin');
 // })->name('admin');
+Route::get('/planning', function () {
+    return view('planning');
+})->name('planning');
