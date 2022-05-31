@@ -109,11 +109,14 @@ Route::get('/admin', function () {
 })->name('admin');
 
 
-Route::get('/contactez', function () {
- 
-    $data["email"] = "oasisgarden10@gmail.com";
-    $data["title"] = "votre reçu de reservation OASIS";
-    $data["body"] = "this is demo";
+
+//mail
+Route::post('/contactez', function () {
+
+    $details["email"] = "oasisgarden10@gmail.com";
+    $details["title"] = request('email_emet');
+    $details["body"] = request('message_env');
+
 
 Mail::send('pdf', $data , function($message)use($data){
 
