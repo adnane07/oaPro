@@ -15,9 +15,9 @@ class PdfController extends Controller
     public function pdf(){
 
         $data["email"] = "elakhaladnane.07@gmail.com";
-        
 
-    $pdf = PDF::loadView('hello',$data);
+
+    $pdf = PDF::loadView('pdf',$data);
 
     return $pdf->download("RecapilatifReserve.pdf");
 
