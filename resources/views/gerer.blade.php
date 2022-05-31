@@ -1,7 +1,10 @@
 @extends('layouts.app')
+@section('accueil')
+    {{ url('/') }}
+@endsection
     @section('content')
 
-    <body style=" background-color:rgb(150, 151, 116)">
+    <body style=" background-color:rgb(150, 151, 116);">
         <div class="container" style="margin-top: 4%;">
 
             <div class="row justify-content-center">

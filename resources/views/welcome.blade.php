@@ -1,10 +1,29 @@
 @extends('layouts.app')
+@section('accueil')
+    {{ url('/') }}
+@endsection
     @section('content')
         <body style=" background-color:rgb(24, 181, 152)">
             <div class="container" style="margin-top: 4%;">
 
                 <div class="row justify-content-center">
-                    <div class="col-md-7  ">
+                    <div class="col-md-7 ">
+                    @if(session('status'))
+                    <div class="alert alert-success ">
+                        <div class="col">
+                            <i class="bi bi-check-circle-fill float-start"></i>
+                            Votre mot de passe a ete bien reintialise !!
+                            <button type="button" class="btn-close float-end"
+                            data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    @endif
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col-md-7 ">
                         <div class="border border-1 border-white rounded" id="login" style="background-color: white">
 
                         <h4 class="card-title" style="font-weight: bold; color:rgb(0, 128, 85); text-align: center">Reserver</h4>
@@ -65,7 +84,7 @@
 
     </div>
     <!-- Modal -->
-    <form method="post" action={{"proj.php"}}>
+    <form method="post" action={{ route('contactez') }}>
         @csrf
      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-dialog-centered">
@@ -73,10 +92,10 @@
              <div class="modal-body">
 
                 <div class="mb-3">
-                   <input type="email" class="form-control" id="inpu" placeholder="name@example.com">
+                   <input type="email" class="form-control" id="inpu" name="email_emet" placeholder="name@example.com">
                 </div>
                 <div class="mb-3">
-                   <textarea class="form-control" id="inpu" rows="3"></textarea>
+                   <textarea class="form-control" id="inpu" rows="3" name="message_env"></textarea>
                 </div>
 
 
