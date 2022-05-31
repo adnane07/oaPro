@@ -31,7 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
     // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
-    //Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
+    Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
 });
 
 // Route::middleware(['first', 'second'])->group(function () {
@@ -77,7 +77,7 @@ Route::get('/uploadpdf', function () {
         $data["title"] = "votre reçu de reservation OASIS";
         $data["body"] = "this is demo";
 
-    $pdf = PDF::loadView('pdf',$data);
+    $pdf = PDF::loadView('hello',$data);
 
     Mail::send('pdf', $data , function($message)use($data , $pdf){
 
@@ -100,6 +100,14 @@ Route::get('/annuler', function () {
 // Route::get('/admin', function () {
 //     return view('admin');
 // })->name('admin');
+Route::get('/planning', function () {
+    return view('planning');
+})->name('planning');
+
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
+
 
 
 //mail
@@ -109,13 +117,14 @@ Route::post('/contactez', function () {
     $details["title"] = request('email_emet');
     $details["body"] = request('message_env');
 
-Mail::send('mailsend',$details , function($message)use($details){
+
+Mail::send('mailsend', $details , function($message)use($details){
 
     $message->to($details["email"])
             ->subject($details["title"]);
 
 });
 
-return redirect()->back();
+return view('welcome');
 })->name('contactez');
 
