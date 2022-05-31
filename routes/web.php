@@ -38,8 +38,8 @@ Route::get('/dispo', function () {
 })->name('dispo');
 
 Route::get('/uploadpdf', function () {
-
-    $data["email"] = "elakhaladnane.07@gmail.com";
+ 
+        $data["email"] = "elakhaladnane.07@gmail.com";
         $data["title"] = "votre reçu de reservation OASIS";
         $data["body"] = "this is demo";
 
@@ -65,3 +65,20 @@ Route::get('/annuler', function () {
 Route::get('/admin', function () {
     return view('admin');
 })->name('admin');
+
+
+Route::get('/contactez', function () {
+ 
+    $data["email"] = "oasisgarden10@gmail.com";
+    $data["title"] = "votre reçu de reservation OASIS";
+    $data["body"] = "this is demo";
+
+Mail::send('pdf', $data , function($message)use($data){
+
+    $message->to($data["email"])
+            ->subject($data["title"]);
+
+});
+
+return view('welcome');
+})->name('contactez');
