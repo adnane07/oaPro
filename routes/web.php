@@ -31,6 +31,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
     // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
+    
+    //Route::post('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
+
     //Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
 });
 
@@ -127,4 +130,16 @@ Mail::send('mailsend', $details , function($message)use($details){
 
 return redirect()->back();
 })->name('contactez');
+
+
+
+
+// ************* ajout****************
+Route::get('/add', [App\Http\Controllers\addController::class, 'index'])->name('add');
+// Route::post('/add', function () {
+//     return view('add');
+// });
+Route::post('ajouter', [App\Http\Controllers\addController::class, 'ajouter'])->name('ajouter');
+
+
 
