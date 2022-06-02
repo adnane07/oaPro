@@ -15,4 +15,7 @@ class AdminController extends Controller
     {
         return view('annuler');
     }
+
+
 }
+
