@@ -29,7 +29,7 @@
                         <h4 class="card-title" style="font-weight: bold; color:rgb(0, 128, 85); text-align: center">Reserver</h4>
 
 
-                    <form method="POST" action="#">
+                    <form method="post" action={{ route('dispo') }}>
                         @csrf
                         <div class="col-md-6 offset-md-3 row mb-3">
                             <input type="datetime-local"
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="col-md-6 offset-md-3 row mb-3">
-                        <select class="form-select " id="inpu" name="T">
+                        <select class="form-select " id="inpu" name="terrain">
                             <option value="all" class="form-select-lg">selectionner une terrain</option>
                             <option value="1" class="form-select-lg">Terrain 1</option>
                             <option value="2" class="form-select-lg">Terrain 2</option>

@@ -67,9 +67,8 @@ Route::get('/gerer', function () {
     return view('gerer');
 })->name('gerer');
 
-Route::get('/dispo', function () {
-    return view('dispo');
-})->name('dispo');
+
+Route::post('/dispo', [App\Http\Controllers\Controller::class, 'dispo'])->name('dispo');
 
 Route::get('/uploadpdf', function () {
 
