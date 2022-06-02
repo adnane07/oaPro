@@ -41,6 +41,8 @@
   
          <input type="time" id="appt" name="heureFin"
                  required>
+
+
                  {{-- <div class="mb-3">
                   <label for="heureDepart" class="form-label">heure de depart </label>
                   <input type="text" class="form-control" id="heureDepart" placeholder="10 " name="heureDepart" required value="{{old('heureDepart')}}">

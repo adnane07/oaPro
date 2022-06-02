@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Planning;
+use Carbon\Carbon;
 
 
 
@@ -20,36 +21,29 @@ class addController extends Controller
 
     function ajouter( Request $request){
 
-    //  $request->validate([
-    //      'heureDepart'=>'required',
-    //      'heureFin'=>'required',
-    //      'prix'=>'required',
-
-
-    //  ]);
-     //pour l insertion dand DB et ajouter la biblio de db
-    
-
-    //  $query=DB::table('planning')->insert([
-    //     'heureDepart'=>request->input('heureDepart'),
-    //     'heureFin'=>request->input('heureFin'),
-    //     'prix'=>request->input('prix')
-
-
-    //  ]);
-     //check if data is insert into db
-    //  if($query){
-    //      return back()->with('success',' data est inserer');
-    //  }else{
-    //      return back()->with('fail',' data  n est pas  inserer');
-    //  }
+   
+    $current2 = new Carbon($request->input('heureDepart'));
     $planning = new Planning;
     $planning->heureDepart =$request->input('heureDepart');
-    $planning->heureFin =$request->input('heureFin');
-   // $planning->prix =$request->input('prix');
+   $planning->heureFin =$request->input('heureFin');
+//    ******************* carbon function ********************
+//    for($i=1;$i<4;$i++){
+    
+//       $planning->heureFin = $current2 ->addHour($i);
+      
+//       $planning->save();}
+//       for($i=0;$i<4;$i++){
+    
+//         $planning->heureDepart=$current2 ->addHour($i);
+        
+//         $planning->save();}
+// *************************************************************
+
+
+  
     $planning->save();
 
-    //return back()->with('status',' aded successfuly');
+    
     return back()->with('success',' les donnes sont inserer');
 
 
