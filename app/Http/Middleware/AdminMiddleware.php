@@ -18,25 +18,12 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-    //    return $next($request);
-    // //    if(Auth::check()){
-    //     //    admin role 1
-    //        if( Auth::user()->isAdmin  ){
-    //         return $next($request);
-    //         return redirect()->back();
-    //       } 
+   
     if (Auth::user() &&  Auth::user()->isAdmin == 1) {
       return $next($request);
- }
+ }else{
 
- return redirect('home')->with('error','You have not admin access');
-        // else{
-
-// return redirect('/home')->with('message',' acces refuse ');
-//            }
-
-    //    } else{
-    //     return redirect('/home');
-    //    }
+ return redirect('home')->with('error','You have not admin access');}
+   
     }
 }

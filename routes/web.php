@@ -29,8 +29,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // admin section if ($request()->user() && request()->user()->isAdmin())
 
 Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
-    // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
+    
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
+
 
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
@@ -42,6 +43,7 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
     //Route::post('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
 
     //Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
+
 });
 
 // Route::middleware(['first', 'second'])->group(function () {
