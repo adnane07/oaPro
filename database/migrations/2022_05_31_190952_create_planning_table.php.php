@@ -16,9 +16,9 @@ return new class extends Migration
         //
         Schema::create('planning', function (Blueprint $table) {
             $table->id();
-            $table->time('heureDepart')->format('h:i');
+            $table->string('heureDepart')->format('h:i');
             $table->string('heureFin')->format('h:i');;
-            $table->string('prix')->default('150');
+            $table->integer('prix')->default('150');
             $table->rememberToken();
             $table->timestamps();
 

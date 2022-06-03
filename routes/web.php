@@ -31,8 +31,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
     
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
-    
- 
+
+
+
+    Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
+    Route::get('/edit', [App\Http\Controllers\addController::class, 'index'])->name('edit');
+    // Route::post('/add', function () {
+    //     return view('add');
+    // });
+
+    //Route::post('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
+
+    //Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
+
 });
 
 // Route::middleware(['first', 'second'])->group(function () {
@@ -68,9 +79,9 @@ Route::get('/gerer', function () {
     return view('gerer');
 })->name('gerer');
 
-Route::get('/dispo', function () {
-    return view('dispo');
-})->name('dispo');
+
+Route::post('/dispo', [App\Http\Controllers\Controller::class, 'dispo'])->name('dispo');
+
 
 Route::get('/uploadpdf', function () {
 
@@ -105,10 +116,6 @@ Route::get('/planning', function () {
     return view('planning');
 })->name('planning');
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
-
 
 
 //mail
@@ -133,11 +140,7 @@ return redirect()->back();
 
 
 // ************* ajout****************
-Route::get('/add', [App\Http\Controllers\addController::class, 'index'])->name('add');
-// Route::post('/add', function () {
-//     return view('add');
-// });
-Route::post('ajouter', [App\Http\Controllers\addController::class, 'ajouter'])->name('ajouter');
+
 
 
 
