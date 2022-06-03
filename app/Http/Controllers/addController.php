@@ -24,13 +24,13 @@ class addController extends Controller
 
    
 //    $current2 = new Carbon($request->input('heureDepart'));
-    $planning = new Planning;
-  $planning->heureDepart =$request->input('heureDepart');
-   $planning->heureFin =$request->input('heureFin');
-   $planning->save();
+//     $planning = new Planning;
+//   $planning->heureDepart =$request->input('heureDepart');
+//    $planning->heureFin =$request->input('heureFin');
+//    $planning->save();
 
     
-   return back()->with('success',' les donnes sont inserer');
+//    return back()->with('success',' les donnes sont inserer');
 //    ******************* carbon function ********************
 //    for($i=1;$i<4;$i++){
 //     $planning = new Planning;

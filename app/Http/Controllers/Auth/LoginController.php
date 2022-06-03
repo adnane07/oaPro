@@ -35,7 +35,8 @@ class LoginController extends Controller
      * @return void
      */
     protected function redirectTo (){
-        if(Auth::user()->isAdmin == 1){
+        if(Auth::user()->isAdmin == 1)
+        {
             return  '/sup/admin';
          }
         else {

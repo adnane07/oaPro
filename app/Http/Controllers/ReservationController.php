@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ReservationController extends Controller
 {
     //
-    function inser( Request $request){
+    function insert( Request $request){
 
    
         
