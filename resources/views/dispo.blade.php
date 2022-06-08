@@ -25,10 +25,13 @@
                         <td style="vertical-align: middle; text-align: center"> terrain {{$terrain}}</td>
                         <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}} DH</td>
                         <td>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}">
-                              Reserver
-                            </button>
+                            <!-- Button trigger modal --> 
+                            <?php $isreserved = DB::table('Reservation')->where('planningId', $hour->id.''.$terrain.''.$date)->first();?>
+                            @if($isreserved)
+                            <button  @disabled(true) type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver</button>
+                            @else
+                            <button   type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver </button>
+                            @endif
                      @guest
 
                         @if (Route::has('login'))

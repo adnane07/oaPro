@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     //
     public function index()
     {
-        $listereserver = Reservation::all();
+        $listereserver = DB::table('Reservation')->orderBy('dateReservation')->orderBy('heureDepart')->get();
             return view('admin',['reservers' => $listereserver]);
 
     }
@@ -19,10 +20,10 @@ class AdminController extends Controller
     {
 
         $search = [
-            "date" => request('date'),
-            "heureDepart" => request('heureDepart')];
-
-        $listereserver = Reservation::all();
+            "date" => request('date')];
+           
+        $listereserver = DB::table('Reservation')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
+        
             return view('admin',['reservers' => $listereserver]);
 
     }

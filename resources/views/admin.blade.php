@@ -28,7 +28,7 @@
                 <i class="bi bi-search"></i> Search
             </button>
             <!-- Modal search-->
-            <form method="POST" action={{ route('add') }}>
+            <form method="POST" action={{ route('search') }}>
                 @csrf
              <div class="modal fade" id="search" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -36,33 +36,18 @@
                   <div class="modal-body">
                     
                     <div class="col-md-6 offset-md-3 row mb-3">
-                        <input type="number" name="idR"
-                        class="form-control"
-                        id="inpu"
-                        placeholder="ID reservation">
-                    </div>
-
-                    <div class="col-md-6 offset-md-3 row mb-3">
-                        <input type="datetime-local"
+                        <input type="datetime"
                         class="form-control" name="date"
-                        value="{{ old('date') }}"
-                        
+                        required
                         placeholder="selectionner une date">
                     </div>
-                    
-                    <div class="col-md-6 offset-md-3 row mb-3">
-                        <input type="time-local" 
-                        id="inpu" class="form-control" 
-                        placeholder="heure" name="heureDepart"
-                         value="{{ old('date') }}">
-                    </div>
-                    
+                  
                     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
                     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
                     <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
             
                     <script>
-                       flatpickr("input[type=datetime-local]",
+                       flatpickr("input[type=datetime]",
                        {
                            altInput: true,
                            locale:"fr",
@@ -72,20 +57,11 @@
                            minDate: "today",
                            maxDate: new Date().fp_incr(7)
                         });
-                        
-                        flatpickr("input[type=time-local]",
-                        {   
-                        locale:"fr",
-                        enableTime: true,
-                        noCalendar: true,
-                        dateFormat: "H:00",
-                        time_24hr: true
-                        });
-
                     </script>
                     
                   </div>
                   <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary">Annuler</button>
                     <button type="submit" class="btn btn-success">Search</button>
                   </div>
                 </div>
@@ -108,7 +84,8 @@
           </tr>
         </thead>
         <tbody>
-    @foreach($reservers as $reserver)
+    @if(!$reservers->isEmpty())
+     @foreach($reservers as $reserver)
         <tr>
             <th scope="row" style="vertical-align: middle; text-align: center">{{$reserver->id}}</th>
             <td style="vertical-align: middle; text-align: center">{{$reserver->name}}</td>
@@ -125,7 +102,7 @@
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#supprimerModal{{$reserver->id}}">
                     <i class="bi bi-trash3"></i>
-                  </button>
+                </button>
               </div>
 
             <!-- Modal annulation-->
@@ -171,7 +148,12 @@
             </td>
 
         </tr>
-    @endforeach
+     @endforeach
+    @else 
+     <tr>
+        <td colspan="5" style="text-align: center; color: #ff4136;">Pas de reservation trouvés </td>
+     </tr>
+    @endif
         </tbody>
       </table>
             </div>
