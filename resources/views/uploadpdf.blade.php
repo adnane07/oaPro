@@ -16,8 +16,8 @@
                                 <table class="table table-striped-columns">
                                     <thead>
                                       <tr >
-                                        <th> 20:00-21:00,</th>
-                                        <th colspan="4"> lun 25/05 Terrain 1</th>
+                                        <th> {{$reservation->heureDepart}} - {{$reservation->heureFin}}</th>
+                                        <th colspan="4"> {{$reservation->dateReservation}} Terrain {{$reservation->idTerrain}}</th>
 
                                       </tr>
                                     </thead>
@@ -27,7 +27,7 @@
                                                 <div style="text-align: center;">
                                                     <!-- insert your custom barcode setting your data in the GET parameter "data" -->
                                                     <img alt='Barcode Generator TEC-IT'
-                                                    src='https://barcode.tec-it.com/barcode.ashx?code=QRCode_Events&data=BEGIN%3AVEVENT%0ASUMMARY%3Aadnane%0ALOCATION%3A060514822%0ADESCRIPTION%3Aterrain+3%0ADTSTART%3A20220526T195800%0AEND%3AVEVENT&eclevel=M&dmsize=Default'/>
+                                                    src='https://barcode.tec-it.com/barcode.ashx?code=QRCode_Events&data=BEGIN%3AVEVENT%0ASUMMARY%3A<?php echo $reservation->name ?>%0ALOCATION%3A<?php echo $reservation->tel ?>%0ADESCRIPTION%3Aterrain+<?php echo $reservation->idTerrain ?>%0ADTSTART%3A<?php  $date = str_replace('-', '', $reservation->dateReservation); echo $date?>T<?php  $time = str_replace(':', '', $reservation->heureDepart); echo $time ?>00%0AEND%3AVEVENT&eclevel=M&dmsize=Default'/>
                                                 </div>
 
                                             </td>
@@ -41,19 +41,19 @@
                                                       <tbody>
                                                         <tr>
                                                           <th colspan="2" scope="row">Id Reservation</th>
-                                                          <td colspan="2">2210635</td>
+                                                          <td colspan="2">{{$reservation->id}}</td>
                                                         </tr>
                                                         <tr>
                                                           <th colspan="2" scope="row">Nom</th>
-                                                          <td colspan="2">hmed lamba</td>
+                                                          <td colspan="2">{{$reservation->name}}</td>
                                                         </tr>
                                                         <tr>
                                                           <th colspan="2" scope="row">Telephone</th>
-                                                          <td colspan="2">0505050505</td>
+                                                          <td colspan="2">{{$reservation->tel}}</td>
                                                         </tr>
                                                         <tr>
                                                             <th colspan="2" scope="row">email</th>
-                                                            <td colspan="2">lamba@gmail.com</td>
+                                                            <td colspan="2">{{$reservation->email}}</td>
                                                         </tr>
                                                       </tbody>
                                                 </table>

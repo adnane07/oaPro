@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Planning extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    
     protected $table ='planning';
     protected $fillable = [
         'heureDepart',

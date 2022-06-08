@@ -4,7 +4,10 @@ use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +32,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // admin section if ($request()->user() && request()->user()->isAdmin())
 
 Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
-    
-    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
 
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
 
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
@@ -80,27 +82,45 @@ Route::get('/gerer', function () {
 })->name('gerer');
 
 
+Route::post('/confirme/{id}', [App\Http\Controllers\AdminController::class, 'confirme'])->name('confirme');
+Route::post('/supprime/{id}', [App\Http\Controllers\AdminController::class, 'supprime'])->name('supprime');
+
+Route::post('/reserver/{id}/{terrain}/{date}', [App\Http\Controllers\ReservationController::class, 'reserver'])->name('reserver');
+Route::post('/reserverlogin/{id}/{terrain}/{date}', [App\Http\Controllers\ReservationController::class, 'reserverlogin'])->name('reserverlogin');
+
+
 Route::post('/dispo', [App\Http\Controllers\Controller::class, 'dispo'])->name('dispo');
 
 
-Route::get('/uploadpdf', function () {
 
-        $data["email"] = "elakhaladnane.07@gmail.com";
-        $data["title"] = "votre reçu de reservation OASIS";
-        $data["body"] = "this is demo";
 
-    $pdf = PDF::loadView('hello',$data);
 
-    Mail::send('pdf', $data , function($message)use($data , $pdf){
+Route::get('/uploadpdf',function () {
 
-        $message->to($data["email"])
-                ->subject($data["title"])
-                ->attachData($pdf->output(), "RecapilatifReserve.pdf");
+    $planningId = Cookie::get('planningId');
 
-    });
+    $reservation = DB::table('Reservation')->where('planningId', $planningId)->first();
 
-    return view('uploadpdf');
+    //     $data["email"] = "elakhaladnane.07@gmail.com";
+    //     $data["title"] = "votre reçu de reservation OASIS";
+    //     $data["body"] = "this is demo";
+
+    // $pdf = PDF::loadView('hello',$data);
+
+    // Mail::send('pdf', $data , function($message)use($data , $pdf){
+
+    //     $message->to($data["email"])
+    //             ->subject($data["title"])
+    //             ->attachData($pdf->output(), "RecapilatifReserve.pdf");
+
+    // });
+
+    return view('uploadpdf',compact('reservation'));
 })->name('uploadpdf');
+
+
+
+
 
 Route::get('pdf',[ App\Http\Controllers\PdfController::class,'pdf'])->name('pdf');
 

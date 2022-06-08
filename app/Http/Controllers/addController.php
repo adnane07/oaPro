@@ -20,6 +20,7 @@ class addController extends Controller
     }
 
     function ajouter(){
+       Planning::truncate();
 
 
    

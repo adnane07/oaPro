@@ -42,17 +42,20 @@
                     </li>
 
                 </ul>
-                <a class="navbar-brand" 
+                <a class="navbar-brand"
                 href=
                 @guest
                 @if (Route::has('login'))
                 {{ url('/') }}
                 @endif
-                @else 
+                @else
                  @if(Auth::user()->isAdmin)
-                 {{ Route('AdminInt') }} 
+                 {{ Route('AdminInt') }}
+
+                 @else
+                 {{ url('/') }}
                  @endif
-                 
+
                 @endguest  >
                     OASIS GARDEN
                 </a>
@@ -69,7 +72,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('gerer') }}">
@@ -92,10 +95,10 @@
                             @endif
 
                             @else
-                            
-                                
+
+
                                 @if(Auth::user()->isAdmin)
-                        
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('gerer') }}">
                                         <img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/
@@ -103,18 +106,18 @@
                                          {{ __('Historique de Reservation') }}
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('edit') }}">
                                         <img src="https://img.icons8.com/dotty/29/undefined/edit-calendar.png"/>
                                          {{ __('Parametres') }}
                                     </a>
                                 </li>
-                                    
+
                                 @endif
-                                
+
                                 <li class="nav-item dropdown">
-                                
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         <img src="https://img.icons8.com/bubbles/35/000000/user.png"/>
                                      {{ Auth::user()->name }}
