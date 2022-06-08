@@ -22,6 +22,7 @@ class User extends Authenticatable
         'tel',
         'email',
         'password',
+        
     ];
 
     /**
@@ -42,4 +43,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+public function annonce()
+{
+
+    return $this->hasMany(annonce::class);
+}
+
 }
