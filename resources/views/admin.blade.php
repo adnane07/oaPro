@@ -28,7 +28,7 @@
                 <i class="bi bi-search"></i> Search
             </button>
             <!-- Modal search-->
-            <form method="POST" action="#">
+            <form method="POST" action={{ route('add') }}>
                 @csrf
              <div class="modal fade" id="search" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -38,7 +38,7 @@
                     <div class="col-md-6 offset-md-3 row mb-3">
                         <input type="number" name="idR"
                         class="form-control"
-                        id="inpu" required
+                        id="inpu"
                         placeholder="ID reservation">
                     </div>
 
@@ -46,12 +46,15 @@
                         <input type="datetime-local"
                         class="form-control" name="date"
                         value="{{ old('date') }}"
-                        required
+                        
                         placeholder="selectionner une date">
                     </div>
                     
                     <div class="col-md-6 offset-md-3 row mb-3">
-                        <input type="time-local" id="inpu" class="form-control" placeholder="heure" name="heureDepart" value="{{ old('date') }}" required>
+                        <input type="time-local" 
+                        id="inpu" class="form-control" 
+                        placeholder="heure" name="heureDepart"
+                         value="{{ old('date') }}">
                     </div>
                     
                     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

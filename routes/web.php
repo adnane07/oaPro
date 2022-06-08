@@ -35,6 +35,8 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
 
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
 
+    Route::post('/search', [App\Http\Controllers\AdminController::class, 'search'])->name('search');
+
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
     Route::get('/edit', [App\Http\Controllers\addController::class, 'index'])->name('edit');

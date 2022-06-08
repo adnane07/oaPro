@@ -14,6 +14,19 @@ class AdminController extends Controller
             return view('admin',['reservers' => $listereserver]);
 
     }
+
+    public function search()
+    {
+
+        $search = [
+            "date" => request('date'),
+            "heureDepart" => request('heureDepart')];
+
+        $listereserver = Reservation::all();
+            return view('admin',['reservers' => $listereserver]);
+
+    }
+
     public function annuler()
     {
         return view('annuler');
