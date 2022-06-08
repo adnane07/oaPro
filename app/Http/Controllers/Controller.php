@@ -18,12 +18,12 @@ class Controller extends BaseController
     {
 
         $listehour = Planning::all();
-        $details = [
+        $data = [
             "date" => request('date'),
             "terrain" => request('terrain')];
 
 
-            return view('dispo',compact('details'),['hours' => $listehour]);
+            return view('dispo',compact('data'),['hours' => $listehour]);
 
     }
 }

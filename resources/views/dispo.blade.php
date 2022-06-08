@@ -8,24 +8,25 @@
         <div class="card" >
 
     <table class="table" style="margin-bottom: 0%">
+        @foreach(array($data['date']) as $date)
         <thead>
           <tr>
-            <th colspan="4" scope="col" style="text-align: center">{{ $details["date"] }}
+            <th colspan="4" scope="col" style="text-align: center">{{ $date }}
             </th>
 
           </tr>
         </thead>
         <tbody>
             @foreach($hours as $hour)
-                @if ($details["terrain"] == 'all')
+                @if ($data["terrain"] == 'all')
                     @foreach (array(1, 2, 3) as $terrain )
                     <tr>
                         <th scope="row" style="vertical-align: middle; text-align: center">{{$hour->heureDepart}} - {{$hour->heureFin}}</th>
                         <td style="vertical-align: middle; text-align: center"> terrain {{$terrain}}</td>
-                        <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}}</td>
+                        <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}} DH</td>
                         <td>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->heureDepart}}{{$terrain}}">
+                            <button type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}">
                               Reserver
                             </button>
                      @guest
@@ -34,31 +35,31 @@
 
 
                             <!-- Modal -->
-                            <form method="POST" action="{{ route('') }}">
+                            <form method="POST" action="{{ url('reserver/'.$hour->id.'/'.$terrain.'/'.$date) }}">
                                 @csrf
-                             <div class="modal fade" id="valideModal{{$hour->heureDepart}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                             <div class="modal fade" id="valideModal{{$hour->id}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h6 class="modal-title" id="staticBackdropLabel">
-                                            <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$details["date"]}} au {{$hour->heureDepart}}
+                                            <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$date}} au {{$hour->heureDepart}}
                                         </h6>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                   <div class="modal-body">
 
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="inpu" required placeholder="nom" name="name">
+                                        <input type="text" class="form-control" id="inpu" required placeholder="nom" name="name-r">
                                         <label for="floatingInput">Nom</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="prix" class="form-control" id="inpu" required placeholder="name@example.com" name="email">
+                                        <input type="prix" class="form-control" id="inpu" required placeholder="name@example.com" name="email-r">
                                         <label for="floatingInput">Adresse E-mail</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="inpu" value="+212 " required placeholder="+212 6 ...." name="tel">
+                                        <input type="tel" class="form-control" id="inpu" value="+212 " required placeholder="+212 6 ...." name="tel-r">
                                         <label for="floatingInput">N Tel</label>
                                     </div>
 
@@ -76,13 +77,13 @@
 
                         @else
                         <!-- Modal -->
-                        <form method="POST" action="{{ route('') }}">
+                        <form method="POST" action="{{ url('reserverlogin/'.$hour->id.'/'.$terrain.'/'.$date) }}">
                             @csrf
-                         <div class="modal fade" id="valideModal{{$hour->heureDepart}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <div class="modal fade" id="valideModal{{$hour->id}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-body">
-                                <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$details["date"]}} au {{$hour->heureDepart}}
+                                <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$date}} au {{$hour->heureDepart}}
 
 
                               </div>
@@ -101,51 +102,54 @@
                     </tr>
                     @endforeach
                 @else
-                    @foreach (array($details["terrain"]) as $terrain )
+                    @foreach (array($data["terrain"]) as $terrain )
 
 
     <tr>
             <th scope="row" style="vertical-align: middle; text-align: center">{{$hour->heureDepart}} - {{$hour->heureFin}}</th>
             <td style="vertical-align: middle; text-align: center"> terrain {{$terrain}}</td>
-            <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}}</td>
+            <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}} DH</td>
             <td>
+                
                 <!-- Button trigger modal -->
-                {{-- <button  @disabled(true) type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->heureDepart}}{{$terrain}}"> --}}
-                <button   type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->heureDepart}}{{$terrain}}">
-
-                  Reserver
-                </button>
+                <?php $isreserved = DB::table('Reservation')->where('planningId', $hour->id.''.$terrain.''.$date)->first();?>
+                @if($isreserved)
+                    <button  @disabled(true) type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver</button>
+                        
+                @else
+                    <button   type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver </button>
+                @endif
         @guest
 
             @if (Route::has('login'))
 
 
                 <!-- Modal -->
-                <form method="POST" action="#">
+                <form method="POST" action="{{url('reserver/'.$hour->id.'/'.$terrain.'/'.$date)}}">
                     @csrf
-                 <div class="modal fade" id="valideModal{{$hour->heureDepart}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal fade" id="valideModal{{$hour->id}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h6 class="modal-title" id="staticBackdropLabel">
-                                <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$details["date"]}} au {{$hour->heureDepart}}
+                                <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$date}} au {{$hour->heureDepart}}
                             </h6>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                       <div class="modal-body">
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="inpu" required placeholder="nom">
+                            <input type="text" class="form-control" id="inpu" required placeholder="nom" name="name-r">
                             <label for="floatingInput">Nom</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="prix" class="form-control" id="inpu" required placeholder="name@example.com">
+                            <input type="prix" class="form-control" id="inpu" required placeholder="name@example.com" name="email-r">
                             <label for="floatingInput">Adresse E-mail</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="inpu" value="+212 " required placeholder="+212 6 ....">
+                            <input type="tel" class="form-control" id="inpu" value="+212 " required placeholder="+212 6 ...." name="tel-r">
                             <label for="floatingInput">N Tel</label>
                         </div>
 
@@ -163,13 +167,13 @@
 
             @else
             <!-- Modal -->
-            <form method="POST" action="#">
+            <form method="POST" action="{{url('reserverlogin/'.$hour->id.'/'.$terrain.'/'.$date)}}">
                 @csrf
-             <div class="modal fade" id="valideModal{{$hour->heureDepart}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal fade" id="valideModal{{$hour->id}}{{$terrain}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$details["date"]}} au {{$hour->heureDepart}}
+                    <img src="https://img.icons8.com/color/40/000000/checked--v1.png"/> Reserver Terrain {{$terrain}} {{$date}} au {{$hour->heureDepart}}
 
 
                   </div>
@@ -190,6 +194,7 @@
                 @endif
             @endforeach
         </tbody>
+        @endforeach
       </table>
     </div></div>
 

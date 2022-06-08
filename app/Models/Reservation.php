@@ -12,8 +12,10 @@ class Reservation extends Model
     protected $fillable = [
         'name',
         'tel',
-        'emai',
+        'email',
         'dateReservation',
+        'heureDepart',
+        'heureFin',
         'idTerrain',
         'planningId'
     ];

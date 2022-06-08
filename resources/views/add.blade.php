@@ -34,11 +34,11 @@
                 <input type="time-local" id="inpu" class="form-control" placeholder="--:--" name="heureFin" value="{{ old('date') }}" required>
             </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-        <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+         <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+         <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 
-        <script>
+         <script>
            flatpickr("input[type=time-local]",
            {   
                locale:"fr",
@@ -48,7 +48,7 @@
                time_24hr: true
             });
 
-        </script>
+         </script>
 
             <div class="col-md-4 offset-md-4 row mb-3">
                 <label for="prix" class="form-label">Prix </label>

@@ -18,13 +18,16 @@ return new class extends Migration
             $table->boolean('isConfirmed')->default(false);
             $table->string('name');
             $table->string('tel')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->date('dateReservation');
+            $table->string('heureDepart');
+            $table->string('heureFin');
             $table->string('idTerrain');
-            $table->foreignId('planningId')
-                  ->constrained('planning')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+            $table->string('planningId');
+            // $table->foreignId('planningId')
+            //       ->constrained('planning')
+            //       ->onDelete('cascade')
+            //       ->onUpdate('cascade');
 
             $table->timestamps();
         });
