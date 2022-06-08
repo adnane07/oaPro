@@ -74,7 +74,7 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
 
 Route::get('/home', function () {
     return view('welcome');
-});
+})->name('home');
 Route::get('/gerer', function () {
     return view('gerer');
 })->name('gerer');
@@ -109,9 +109,7 @@ Route::get('/annuler', function () {
 })->name('annuler');
 
 
-// Route::get('/admin', function () {
-//     return view('admin');
-// })->name('admin');
+
 Route::get('/planning', function () {
     return view('planning');
 })->name('planning');
@@ -139,8 +137,20 @@ return redirect()->back();
 
 
 
-// ************* ajout****************
+// ************* adds****************
+// Route::get('/annonce', function () {
+//     return view('annonce');
+// });
+
+Route::get('/annonce', [App\Http\Controllers\annonceController::class, 'create'])->name('annonce');
+Route::post('/annonce',[App\Http\Controllers\annonceController::class, 'store'])->name('store');
 
 
 
+// **************************************
+// Route::get('/affichage', function () {
+//     return view('affichage');
+// })->name('affichage');
+Route::get('/affichage',[App\Http\Controllers\annonceController::class, 'index'])->name('affichage');
+//Route::get('/annonce',[App\Http\Controllers\annonceController::class, 'index'])->name('annonce');
 
