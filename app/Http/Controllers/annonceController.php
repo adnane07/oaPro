@@ -54,15 +54,33 @@ $annonces->description=$validated['description'];
 $annonces->user_id=auth()->user()->id;
 $annonces->save();
 
-return redirect()->route('annonce')->with('success','votre annonce a ete poste');
+return redirect()->route('affichage')->with('success','votre annonce a ete poste');
 
     }
 
 
-public function delete()
+public function delete($id)
 {
-    
+$annonce=annonce::where('id',$id)->first();
+$annonce->delete();
+return redirect()->route('affichage')->with([
+    'success'=> 'annonce supprime'
+]);
 }
+
+public function edit( Request $request ,$id)
+{
+    $annonce=annonce::where('id',$id)->first();
+    $annonce->update([
+        'titre' => $request->titre,
+        'description' => $request->description,
+    ]);
+    return redirect()->route('affichage')->with([
+        'success'=> 'annonce modifie'
+    ]);
+}
+
+ 
 
 
 

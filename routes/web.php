@@ -160,12 +160,13 @@ return redirect()->back();
 
 
 // ************* adds****************
-// Route::get('/annonce', function () {
-//     return view('annonce');
-// });
+
 
 Route::get('/annonce', [App\Http\Controllers\annonceController::class, 'create'])->name('annonce');
 Route::post('/annonce',[App\Http\Controllers\annonceController::class, 'store'])->name('store');
+Route::get('/affichage',[App\Http\Controllers\annonceController::class, 'index'])->name('affichage');
+Route::delete('/delete/annonce/{id}',[App\Http\Controllers\annonceController::class, 'delete'])->name('annonce.delete');
+Route::put('/edit/annonce/{id}',[App\Http\Controllers\annonceController::class, 'edit'])->name('annonce.edit');
 
 
 
@@ -173,6 +174,7 @@ Route::post('/annonce',[App\Http\Controllers\annonceController::class, 'store'])
 // Route::get('/affichage', function () {
 //     return view('affichage');
 // })->name('affichage');
-Route::get('/affichage',[App\Http\Controllers\annonceController::class, 'index'])->name('affichage');
-//Route::get('/annonce',[App\Http\Controllers\annonceController::class, 'index'])->name('annonce');
+Route::get('/remove',[App\Http\Controllers\removeController::class, 'show'])->name('remove');
+
+
 

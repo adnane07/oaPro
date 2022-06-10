@@ -23,7 +23,7 @@
                 <div class="mb-3">
                   <label for="titre" class="form-label">titre</label>
                   <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre">
-                  {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                 
                 </div>
                 
                 <div class="form-group">

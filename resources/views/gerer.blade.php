@@ -12,7 +12,7 @@
                     <div class="border border-1 border-white rounded" id="login" style="background-color: white">
                     <h4 class="card-title" style="font-weight: bold; color:green; text-align: center">Gérer les réservations</h4>
 
-                <form method="POST" action="#">
+                <form method="GET" action="{{route('remove')}}">
                     @csrf
 
                     <div class="col-md-6 offset-md-3 row mb-3">
