@@ -74,16 +74,18 @@
                         <!-- Authentication Links -->
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('gerer') }}">
-                                <img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/>
-                                 {{ __('Gérer la reservation') }}
-                            </a>
-                        </li>
+
 
                         @guest
 
                             @if (Route::has('login'))
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('gerer') }}">
+                                        <img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/>
+                                         {{ __('Gérer la reservation') }}
+                                    </a>
+                                </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">
@@ -100,9 +102,16 @@
                                 @if(Auth::user()->isAdmin)
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('gerer') }}">
+                                    <a class="nav-link" href="/">
+                                        <img src="https://img.icons8.com/dotty/28/undefined/reservation-2.png"/>
+                                        {{ __('Ajouter une reservation') }}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('historique') }}">
                                         <img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/
-                                        28/000000/external-history-business-analytics-inipagistudio-mixed-inipagistudio.png"/>
+                                        27/000000/external-history-business-analytics-inipagistudio-mixed-inipagistudio.png"/>
                                          {{ __('Historique de Reservation') }}
                                     </a>
                                 </li>

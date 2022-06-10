@@ -8,12 +8,22 @@
     @section('content')
 <body  style=" background-color:rgb(24, 181, 152)">
     <div class="container" style="margin-top: 2%; ">
+       
 
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="border border-1 border-white rounded" id="login" style="background-color: white">
-                <h4 class="card-title" style="font-weight: bold; color:green; text-align: center">Planning du jour</h4>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+        <h4 class="card-title" style="font-weight: bold; color:green; text-align: center">Planning du jour</h4>
 
 
         @if(Session::get('success'))

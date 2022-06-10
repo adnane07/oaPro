@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Planning;
 use Carbon\Carbon;
-
-
-
+use Illuminate\Http\Request;
 //biblio de db
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +16,14 @@ class addController extends Controller
         return view('add')->with('success',' les donnes sont inserer');
     }
 
-    function ajouter(){
+    function ajouter(Request $request){
+
+        $validated = $request->validate([
+            "heureDepart" => 'required',
+            "heureFin" => 'required',
+            ]);
+
+
        Planning::truncate();
 
 

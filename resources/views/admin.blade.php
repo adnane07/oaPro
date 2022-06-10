@@ -9,6 +9,15 @@
     @section('content')
 <body  style=" background-color:rgb(24, 181, 152)">
     <div class="container" style="margin-top: 2%; ">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @if (session('supprime'))
             <div class="alert alert-danger">{{session('supprime')}}</div>
         @endif
@@ -19,9 +28,7 @@
             <div class="alert alert-success">{{session('confirme')}}</div>
         @endif
 
-            <a type="button" class="btn btn-primary" href="/" style="color: yellow; background-color: darkblue">
-                <i class="bi bi-pencil-square" ></i> Ajouter une reservation
-            </a>
+            
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#search">
