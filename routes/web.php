@@ -37,6 +37,8 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
 
     Route::post('/search', [App\Http\Controllers\AdminController::class, 'search'])->name('search');
 
+    Route::get('/historique', [App\Http\Controllers\AdminController::class, 'history'])->name('historique');
+
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
     Route::get('/edit', [App\Http\Controllers\addController::class, 'index'])->name('edit');
@@ -90,7 +92,7 @@ Route::post('/supprime/{id}', [App\Http\Controllers\AdminController::class, 'sup
 Route::post('/reserver/{id}/{terrain}/{date}', [App\Http\Controllers\ReservationController::class, 'reserver'])->name('reserver');
 Route::post('/reserverlogin/{id}/{terrain}/{date}', [App\Http\Controllers\ReservationController::class, 'reserverlogin'])->name('reserverlogin');
 
-Route::get('/historique', [App\Http\Controllers\AdminController::class, 'history'])->name('historique');
+
 Route::post('/dispo', [App\Http\Controllers\Controller::class, 'dispo'])->name('dispo');
 
 
