@@ -159,7 +159,7 @@ return redirect()->back();
 
 
 
-// ************* adds****************
+// **************************************adds********************************************************
 
 
 Route::get('/annonce', [App\Http\Controllers\annonceController::class, 'create'])->name('annonce');
@@ -170,11 +170,11 @@ Route::put('/edit/annonce/{id}',[App\Http\Controllers\annonceController::class, 
 
 
 
-// **************************************
-// Route::get('/affichage', function () {
-//     return view('affichage');
-// })->name('affichage');
+// ************************************************************************************************
+
 Route::get('/remove',[App\Http\Controllers\removeController::class, 'show'])->name('remove');
+Route::delete('/delete/{id}',[App\Http\Controllers\removeController::class, 'delete'])->name('reservation.delete');
+
 
 
 

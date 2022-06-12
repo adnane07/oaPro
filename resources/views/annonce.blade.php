@@ -6,8 +6,9 @@
 
 
     <body  style=" background-color:rgb(24, 181, 152)">
-        <div class="container" style="margin-top: 4%;">
-           
+        <div class="container" style="margin-top: 1%;">
+            <div class="row justify-content-center">
+                <div class="col-md-5 ">
            @if(session()->has('sucess'))
 <div class="alert alert-success">
 
@@ -22,23 +23,28 @@
                 @csrf
                 <div class="mb-3">
                   <label for="titre" class="form-label">titre</label>
-                  <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre">
+                  <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre" required>
                  
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group mb-3 ">
                     <label for="description"> contenu de l'annonce</label>
-                    <textarea name="description" class="form-control " id="description" cols="30" rows="10"></textarea>
-                {{-- @if ($errors ->has('description'))
+                    <textarea name="description" class="form-control " id="description" cols="10" rows="5" required></textarea>
+                @if ($errors ->has('description'))
 
                 <span class="invalid-feedback">{{$errors->first('description')}}</span>
-                @endif --}}
-                
+                @endif
+
                 </div>
+                
+
+                <button type="submit" class="btn btn-default " style="background-color:rgb(16, 228, 136); color:azure;">Submit</button>
+            
+            </div>
+        </div>
 
 <br>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
               </form>
 
 {{-- ***************************************************************************** --}}
