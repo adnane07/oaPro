@@ -24,9 +24,9 @@
                 <div class="mb-3">
                   <label for="titre" class="form-label"  style=" font-weight: bold; color:rgb(229, 237, 235); ">Titre de l'annonce</label>
                   <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre"   placeholder=" exemple: Demande\Offre\Evenement ..." required>
-                 
+
                 </div>
-                
+
                 <div class="form-group mb-3 ">
                     <label for="description" style=" font-weight: bold; color:rgb(229, 237, 235); "> Contenu de l'annonce</label>
                     <textarea name="description" class="form-control " id="description" cols="10" rows="5"   placeholder="Votre texte ici"   required></textarea>
@@ -36,10 +36,10 @@
                 @endif
 
                 </div>
-                
 
-                <button type="submit" class="btn btn-default " style="background-color:rgb(16, 228, 136); color:azure;">Submit</button>
-            
+
+                <button type="submit" class="btn btn-success ">Submit</button>
+
             </div>
         </div>
 
