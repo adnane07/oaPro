@@ -13,6 +13,13 @@
 
                 <div class="card-body text-white" id="loginn" >
 
+                     
+                    @if(Session::get('error'))
+                    <div class="alert alert-danger">
+                        {{session::get('error')}}
+                    </div>
+                    @endif
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="col-md-6 offset-md-3">

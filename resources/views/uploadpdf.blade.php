@@ -40,7 +40,7 @@
                                                       </thead>
                                                       <tbody>
                                                         <tr>
-                                                          <th colspan="2" scope="row">Id Reservation</th>
+                                                          <th colspan="2" scope="row">code Reservation</th>
                                                           <td colspan="2">{{$reservation->id}}</td>
                                                         </tr>
                                                         <tr>

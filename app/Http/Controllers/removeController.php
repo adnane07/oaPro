@@ -35,7 +35,7 @@ public function delete($IdReservation)
     $reservations=Reservation::where('id',$IdReservation)->first();
     $reservations->delete();
 return redirect()->route('gerer')->with([
-    'success'=> 'reservation supprime'
+    'success'=> 'reservation annule'
 ]);
 }
 

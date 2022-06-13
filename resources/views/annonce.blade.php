@@ -22,14 +22,14 @@
             <form method="POST" action="{{ route('store')}}">
                 @csrf
                 <div class="mb-3">
-                  <label for="titre" class="form-label">titre</label>
-                  <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre" required>
+                  <label for="titre" class="form-label"  style=" font-weight: bold; color:rgb(229, 237, 235); ">Titre de l'annonce</label>
+                  <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre"   placeholder=" exemple: Demande\Offre\Evenement ..." required>
                  
                 </div>
                 
                 <div class="form-group mb-3 ">
-                    <label for="description"> contenu de l'annonce</label>
-                    <textarea name="description" class="form-control " id="description" cols="10" rows="5" required></textarea>
+                    <label for="description" style=" font-weight: bold; color:rgb(229, 237, 235); "> Contenu de l'annonce</label>
+                    <textarea name="description" class="form-control " id="description" cols="10" rows="5"   placeholder="Votre texte ici"   required></textarea>
                 @if ($errors ->has('description'))
 
                 <span class="invalid-feedback">{{$errors->first('description')}}</span>
@@ -47,8 +47,30 @@
 
               </form>
 
-{{-- ***************************************************************************** --}}
+<!-- Modal -->
+<form method="post" action={{ route('contactez') }}>
+    @csrf
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+         <div class="modal-body">
 
-{{--  --}}
-           {{-- ******************************************************* --}}
+            <div class="mb-3">
+               <input type="email" class="form-control" id="inpu" name="email_emet" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+               <textarea class="form-control" id="inpu" rows="3" name="message_env"></textarea>
+            </div>
+
+
+        </div>
+      <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-success">Envoyer</button>
+       </div>
+    </div>
+   </div>
+  </div>
+</form>
+
             @endsection

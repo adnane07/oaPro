@@ -9,6 +9,12 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-7">
+                    
+                    @if(Session::get('success'))
+                    <div class="alert alert-success">
+                        {{session::get('success')}}
+                    </div>
+                    @endif
 
 
                     <div class="border border-1 border-white rounded" id="login" style="background-color: white">
@@ -28,7 +34,7 @@
                         <input type="text" name="IdReservation"
                         class="form-control"
                         id="inpu" required
-                        placeholder="ID reservation">
+                        placeholder="code reservation">
                     </div>
 
                     <div class="col-md-6 offset-md-3 row mb-3">

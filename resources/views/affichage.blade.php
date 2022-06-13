@@ -7,20 +7,18 @@
 
 
 <body  style=" background-color:rgb(24, 181, 152)">
+  
     <div class="container" style="margin-top: 4%;">
     @foreach($annonces as $annonce)
     <div class="row justify-content-center">
       <div class="col-md-9 ">
-        @if(session('success'))
 
-<div class="alert alert-success" > 
-<ul>
-  <li>{{session('success')}}
-</ul>
-  @endif
+        
+       
 
 
   <div class="card mb-3">
+    
   
     <div class="card-header" style=" background-color:rgb(209, 236, 206)">
       <?php
@@ -29,8 +27,8 @@
       ?>
     </div>
     <div class="card-body" >
-      {{$annonce->titre}}</h5>
-      <p class="card-text">{{$annonce->description}}</p>
+       <h5  style=" font-weight: bold; color:rgb(203, 35, 35);font-size: 1.75em; ">{{$annonce->titre}}</h5>
+      <p class="card-text" style=" font-size: 1.5em;">{{$annonce->description}}</p>
       
       
       @if(auth()->user()->id === $annonce->user_id)
@@ -140,6 +138,34 @@
 {{-- {{$annonces->links()}} --}}
 
 </div>
+
+
+
+<!-- Modal -->
+<form method="post" action={{ route('contactez') }}>
+  @csrf
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+       <div class="modal-body">
+
+          <div class="mb-3">
+             <input type="email" class="form-control" id="inpu" name="email_emet" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+             <textarea class="form-control" id="inpu" rows="3" name="message_env"></textarea>
+          </div>
+
+
+      </div>
+    <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-success">Envoyer</button>
+     </div>
+  </div>
+ </div>
+</div>
+</form>
 
 
 

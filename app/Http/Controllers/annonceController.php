@@ -18,9 +18,11 @@ class annonceController extends Controller
 
     //****************affichage***************** 
     public function index()
-    {//$users = User::where('user_id', $annonces->id)->get();
-        //$user_id  = cookie::get('id');
-        //$annonces=annonce::find($user_id);
+    { 
+//query builder 
+//$annonces =DB::table('annonce')->orderBy('created_at','DESC')->paginate(4);
+
+
         $annonces =DB::table('annonce')->orderBy('created_at','DESC')->get();
         
 

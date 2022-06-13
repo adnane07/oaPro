@@ -15,20 +15,31 @@
     
   <div class="card-header" style=" text-align: center; font-weight: bold; color:rgb(0, 128, 85); " >Informations de reservation</div>
   <div class="card-body text-info">
-    <h5 class="card-title" style="color: rgb(13, 12, 12)"> <span class="infos" >Nom: </span>{{$resrvation->name}}</h5>
-    <h5 class="card-text" style="color: rgb(13, 12, 12)"> <span class="infos" >Id Reservation :</span> {{$resrvation->id}}</h5>
-    <h5 class="card-text" style="color: rgb(13, 12, 12)"> <span class="infos" >Date :</span> {{$resrvation->dateReservation}}</h5>
-    <h5 class="card-text" style="color: rgb(13, 12, 12)"> <span class="infos" >Heure depart :</span> {{$resrvation->heureDepart}}</h5>
-    <h5 class="card-text" style="color: rgb(13, 12, 12)"> <span class="infos" >Heure Fin :</span> {{$resrvation->heureFin}}</h5>
-   
+    <table>
+   <tr>
+    <td > <h5 class="card-title" style="color: rgb(13, 12, 12)"> <span class="infos" >Nom    </span> <td>
+   <td> <h5 class="card-title" style="color: rgb(13, 12, 12)">  {{$resrvation->name}}</h5> <td></tr>
 
-<style>
-.infos{
-  font-weight: bold; color:rgb(0, 128, 85);
-}
+    <tr>
+      <td> <h5 class="card-title" style="color: rgb(13, 12, 12)"> <span class="infos" >code  </span> <td>
+     <td> <h5 class="card-title" style="color: rgb(13, 12, 12)"> {{$resrvation->id}}</h5> <td></tr>
 
 
-</style>
+      <tr>
+        <td> <h5 class="card-title" style="color: rgb(13, 12, 12)"> <span class="infos" >Date   </span> <td>
+       <td> <h5 class="card-title" style="color: rgb(13, 12, 12)">  {{$resrvation->dateReservation}}</h5> <td></tr>
+  
+        <tr>
+          <td> <h5 class="card-title" style="color: rgb(13, 12, 12)"> <span class="infos" >Heure depart  </span> <td>
+         <td> <h5 class="card-title" style="color: rgb(13, 12, 12)">  {{$resrvation->heureDepart}}</h5> <td></tr>
+
+          <tr>
+            <td> <h5 class="card-title" style="color: rgb(13, 12, 12)"> <span class="infos" >Heure Fin </span> <td>
+           <td> <h5 class="card-title" style="color: rgb(13, 12, 12)">  {{$resrvation->heureFin}}</h5> <td></tr>
+
+    </table>
+
+
   
   
   </div>
@@ -36,7 +47,7 @@
      
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-danger mb-3"  data-bs-toggle="modal" data-bs-target="#supprimerModal{{$resrvation->id}}">
-        <i class="bi bi-trash3"></i>Supprimer
+       Annuler la reservation 
       </button>
   </div>
 </div>
@@ -67,12 +78,53 @@
 
     {{-- ********************************************************************************************** --}}
   @endforeach
-  @else
-  <div style="font-weight: bold; color:rgb(249, 255, 253); " > Aucune réservation n'a été récupérée. vérifiez vos données d'identification </div>
-  @endif
-   
-
-    
+  
+  
     </div>
 </div>
+</div>
+
+@else
+  <div class="alert alert-info" role="alert">
+    aucune réservation n'a été récupérée.Revenir au  <a href="{{url('/')}}" class="alert-link">page reservation </a> pour reserver
+  </div>  @endif
+
+
+<!-- Modal -->
+<form method="post" action={{ route('contactez') }}>
+  @csrf
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+       <div class="modal-body">
+
+          <div class="mb-3">
+             <input type="email" class="form-control" id="inpu" name="email_emet" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+             <textarea class="form-control" id="inpu" rows="3" name="message_env"></textarea>
+          </div>
+
+
+      </div>
+    <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-success">Envoyer</button>
+     </div>
+  </div>
+ </div>
+</div>
+</form>
+
+
+
+<style>
+  .infos{
+    font-weight: bold; color:rgb(0, 128, 85);
+  }
+  
+  
+  </style>
+
+
 @endsection

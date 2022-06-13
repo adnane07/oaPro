@@ -86,6 +86,19 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('annonce') }}">
+                                <img src="https://img.icons8.com/ios/30/000000/crayon.png "/>
+                                 {{ __('Ajouter une annonce') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('affichage') }}">
+                                <img src="https://img.icons8.com/ios/30/000000/paper.png "/>
+                                 {{ __('Voir les annonces') }}
+                            </a>
+                        </li>
+
                         @guest
 
                             @if (Route::has('login'))
