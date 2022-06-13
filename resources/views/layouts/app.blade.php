@@ -8,6 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -75,6 +80,19 @@
 
 
 
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('annonce') }}">
+                                <img src="https://img.icons8.com/ios/30/000000/crayon.png "/>
+                                 {{ __('Ajouter une annonce') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('affichage') }}">
+                                <img src="https://img.icons8.com/ios/30/000000/paper.png "/>
+                                 {{ __('Voir les annonces') }}
+                            </a>
+                        </li>
 
                         @guest
 

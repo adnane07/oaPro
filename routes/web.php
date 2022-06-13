@@ -42,38 +42,17 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
     Route::get('/edit', [App\Http\Controllers\addController::class, 'index'])->name('edit');
-    // Route::post('/add', function () {
-    //     return view('add');
-    // });
-
-    //Route::post('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('AdminInt');
-
-    //Route::get('/annuler', [App\Http\Controllers\AdminController::class, 'annuler'])->name('AnnulerInt');
-
+    
 });
 
-// Route::middleware(['first', 'second'])->group(function () {
-//     Route::get('/', function () {
-//         return view('admin');
-
-//     });
-// });
 
 
 
 
-// Route::prefix('client')->middleware('auth','isClient')->group(function(){
-//     // Route::get('/admin',[AdminController::class,'admin'])-> name('adminInt');
-//     Route::get('/gerer', [App\Http\Controllers\ClientController::class, 'index'])->name('gerer');
-//     Route::get('/dispo', [App\Http\Controllers\ClientController::class, 'dispo'])->name('dispo');
-//     Route::get('/pdf', [App\Http\Controllers\ClientController::class, 'pdf'])->name('pdf');
 
 
 
-// });
-// Route::resource('admin',AdminController::class)->except([
-//     'gerer','dispo'
-// ])->middlware('auth');
+
 
 
 
@@ -161,20 +140,22 @@ return redirect()->back();
 
 
 
-// ************* adds****************
-// Route::get('/annonce', function () {
-//     return view('annonce');
-// });
+// **************************************adds********************************************************
+
 
 Route::get('/annonce', [App\Http\Controllers\annonceController::class, 'create'])->name('annonce');
 Route::post('/annonce',[App\Http\Controllers\annonceController::class, 'store'])->name('store');
+Route::get('/affichage',[App\Http\Controllers\annonceController::class, 'index'])->name('affichage')->middleware('App\Http\Middleware\AnnonceMiddleware');
+Route::delete('/delete/annonce/{id}',[App\Http\Controllers\annonceController::class, 'delete'])->name('annonce.delete');
+Route::put('/edit/annonce/{id}',[App\Http\Controllers\annonceController::class, 'edit'])->name('annonce.edit');
 
 
 
-// **************************************
-// Route::get('/affichage', function () {
-//     return view('affichage');
-// })->name('affichage');
-Route::get('/affichage',[App\Http\Controllers\annonceController::class, 'index'])->name('affichage');
-//Route::get('/annonce',[App\Http\Controllers\annonceController::class, 'index'])->name('annonce');
+// ************************************************************************************************
+
+Route::get('/remove',[App\Http\Controllers\removeController::class, 'show'])->name('remove');
+Route::delete('/delete/{id}',[App\Http\Controllers\removeController::class, 'delete'])->name('reservation.delete');
+
+
+
 

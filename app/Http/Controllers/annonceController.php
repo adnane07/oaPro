@@ -18,9 +18,11 @@ class annonceController extends Controller
 
     //****************affichage***************** 
     public function index()
-    {//$users = User::where('user_id', $annonces->id)->get();
-        //$user_id  = cookie::get('id');
-        //$annonces=annonce::find($user_id);
+    { 
+//query builder 
+//$annonces =DB::table('annonce')->orderBy('created_at','DESC')->paginate(4);
+
+
         $annonces =DB::table('annonce')->orderBy('created_at','DESC')->get();
         
 
@@ -54,15 +56,33 @@ $annonces->description=$validated['description'];
 $annonces->user_id=auth()->user()->id;
 $annonces->save();
 
-return redirect()->route('annonce')->with('success','votre annonce a ete poste');
+return redirect()->route('affichage')->with('success','votre annonce a ete poste');
 
     }
 
 
-public function delete()
+public function delete($id)
 {
-    
+$annonce=annonce::where('id',$id)->first();
+$annonce->delete();
+return redirect()->route('affichage')->with([
+    'success'=> 'annonce supprime'
+]);
 }
+
+public function edit( Request $request ,$id)
+{
+    $annonce=annonce::where('id',$id)->first();
+    $annonce->update([
+        'titre' => $request->titre,
+        'description' => $request->description,
+    ]);
+    return redirect()->route('affichage')->with([
+        'success'=> 'annonce modifie'
+    ]);
+}
+
+ 
 
 
 
