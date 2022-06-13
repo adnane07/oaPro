@@ -37,6 +37,8 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
 
     Route::post('/search', [App\Http\Controllers\AdminController::class, 'search'])->name('search');
 
+    Route::get('/historique', [App\Http\Controllers\AdminController::class, 'history'])->name('historique');
+
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
     Route::get('/edit', [App\Http\Controllers\addController::class, 'index'])->name('edit');
