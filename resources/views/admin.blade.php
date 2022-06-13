@@ -85,7 +85,7 @@
             <th scope="col" style="text-align: center">Id Reservation</th>
             <th scope="col" style="text-align: center">Nom</th>
             <th scope="col" style="text-align: center">Telephone</th>
-            <th scope="col" style="text-align: center">Date reserver</th>
+            <th scope="col" style="text-align: center">Date reservation</th>
             <th scope="col" style="text-align: center">Etat de reservation</th>
 
           </tr>
