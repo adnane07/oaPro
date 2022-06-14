@@ -1,6 +1,5 @@
-{{$planningId = Cookie::get('planningId');}}
-
-    {{$reservation = DB::table('Reservation')->where('planningId', $planningId)->first();}}
+<?php $planningId = Cookie::get('planningId');
+    $reservation = DB::table('Reservation')->where('planningId', $planningId)->first(); ?>
 
 <div class="container" style="margin-top: 4%;">
     <div class="row justify-content-center">
@@ -17,6 +16,15 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr>
+                                <td class="border-end">
+                                <div style="text-align: center; border-right: 1px solid black">
+                                    <!-- insert your custom barcode setting your data in the GET parameter "data" -->
+
+                                    <img alt='Barcode Generator TEC-IT'
+                                    src='https://barcode.tec-it.com/barcode.ashx?code=QRCode_Events&data=BEGIN%3AVEVENT%0ASUMMARY%3A<?php echo $reservation->name ?>%0ALOCATION%3A<?php echo $reservation->tel ?>%0ADESCRIPTION%3Aterrain+<?php echo $reservation->idTerrain ?>%0ADTSTART%3A<?php  $date = str_replace('-', '', $reservation->dateReservation); echo $date?>T<?php  $time = str_replace(':', '', $reservation->heureDepart); echo $time ?>00%0AEND%3AVEVENT&eclevel=M&dmsize=Default'/>
+                                </div>
+
+                            </td>
                                 <td colspan="4">
                                     <table class="table table-borderless">
                                         <thead>
