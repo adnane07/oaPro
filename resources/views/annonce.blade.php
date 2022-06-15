@@ -9,7 +9,7 @@
         <div class="container" style="margin-top: 1%;">
             <div class="row justify-content-center">
                 <div class="col-md-5 ">
-           @if(session()->has('sucess'))
+           @if(session()->has('success'))
 <div class="alert alert-success">
 
 {{session()->get('sucess')}}
@@ -23,7 +23,7 @@
                 @csrf
                 <div class="mb-3">
                   <label for="titre" class="form-label"  style=" font-weight: bold; color:rgb(229, 237, 235); ">Titre de l'annonce</label>
-                  <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre"   placeholder=" exemple: Demande\Offre\Evenement ..." required>
+                  <input type="texte" class="form-control" id="titre" aria-describedby="titre" name="titre"   placeholder=" exemple: Demande\Offre\Evenement\Match ..." required>
 
                 </div>
 

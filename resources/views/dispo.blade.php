@@ -4,7 +4,13 @@
 @endsection
     @section('content')
 <body  style=" background-color:rgb(24, 181, 152)">
-    <div class="container" style="margin-top: 2%; ">
+    <div class="container" style="margin-top: 1%; ">
+        <div class="row justify-content-center">
+            <div class="alert alert-warning col-md-9">
+                       Chers clients, merci d'honorer votre réservation, et de vous présenter 15 min avant le début de votre match.
+            </div>
+
+        </div>
         <div class="card" >
 
     <table class="table" style="margin-bottom: 0%">
@@ -25,7 +31,7 @@
                         <td style="vertical-align: middle; text-align: center"> terrain {{$terrain}}</td>
                         <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}} DH</td>
                         <td>
-                            <!-- Button trigger modal --> 
+                            <!-- Button trigger modal -->
                             <?php $isreserved = DB::table('Reservation')->where('planningId', $hour->id.''.$terrain.''.$date)->first();?>
                             @if($isreserved)
                             <button  @disabled(true) type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver</button>
@@ -113,12 +119,12 @@
             <td style="vertical-align: middle; text-align: center"> terrain {{$terrain}}</td>
             <td style="font-weight: bold; color: green;vertical-align: middle; text-align: center">{{$hour->prix}} DH</td>
             <td>
-                
+
                 <!-- Button trigger modal -->
                 <?php $isreserved = DB::table('Reservation')->where('planningId', $hour->id.''.$terrain.''.$date)->first();?>
                 @if($isreserved)
                     <button  @disabled(true) type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver</button>
-                        
+
                 @else
                     <button   type="button" class="btn btn-success" style="margin-left: 14%" data-bs-toggle="modal" data-bs-target="#valideModal{{$hour->id}}{{$terrain}}"> Reserver </button>
                 @endif

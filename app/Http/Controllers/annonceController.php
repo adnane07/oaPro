@@ -16,18 +16,18 @@ class annonceController extends Controller
     //
 
 
-    //****************affichage***************** 
+    //****************affichage*****************
     public function index()
-    { 
-//query builder 
+    {
+//query builder
 //$annonces =DB::table('annonce')->orderBy('created_at','DESC')->paginate(4);
 
 
         $annonces =DB::table('annonce')->orderBy('created_at','DESC')->get();
-        
+
 
         return view('affichage',compact('annonces'));
-    
+
     }
 
     public function create()
@@ -56,7 +56,7 @@ $annonces->description=$validated['description'];
 $annonces->user_id=auth()->user()->id;
 $annonces->save();
 
-return redirect()->route('affichage')->with('success','votre annonce a ete poste');
+return redirect()->route('affichage')->with('success','votre annonce a été posté');
 
     }
 
@@ -66,7 +66,7 @@ public function delete($id)
 $annonce=annonce::where('id',$id)->first();
 $annonce->delete();
 return redirect()->route('affichage')->with([
-    'success'=> 'annonce supprime'
+    'success'=> 'annonce supprimé'
 ]);
 }
 
@@ -78,11 +78,11 @@ public function edit( Request $request ,$id)
         'description' => $request->description,
     ]);
     return redirect()->route('affichage')->with([
-        'success'=> 'annonce modifie'
+        'success'=> 'annonce modifié'
     ]);
 }
 
- 
+
 
 
 

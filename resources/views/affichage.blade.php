@@ -8,7 +8,14 @@
 
 <body  style=" background-color:rgb(24, 181, 152)">
 
-    <div class="container" style="margin-top: 4%;">
+    <div class="container" style="margin-top: 2%;">
+        <div class="row justify-content-center">
+             @if(Session::get('success'))
+                    <div class="alert alert-success col-md-7">
+                        {{session::get('success')}}
+                    </div>
+                    @endif
+    </div>
     @foreach($annonces as $annonce)
     <div class="row justify-content-center">
       <div class="col-md-9 ">
@@ -104,7 +111,7 @@
 <div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
     <div class="modal-body">
-      <img src="https://img.icons8.com/doodle/40/000000/delete-sign.png"/>  {{$user->name}}  Voulez-vous supprimer cette annonce !
+      <img src="https://img.icons8.com/doodle/40/000000/delete-sign.png"/>   Voulez-vous supprimer cette annonce de {{$user->name}} !
 
 
     </div>
