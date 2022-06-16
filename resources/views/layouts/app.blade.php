@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -77,22 +77,25 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item dropdown">
 
-
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('annonce') }}">
-                                <img src="https://img.icons8.com/ios/30/000000/crayon.png "/>
-                                 {{ __('Ajouter une annonce') }}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img src="https://img.icons8.com/external-fauzidea-detailed-outline-fauzidea/27/undefined/external-journal-back-to-school-fauzidea-detailed-outline-fauzidea.png"/>
+                                 {{__('Annonces') }}
                             </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('annonce') }}">
+                                     {{ __('Ajouter une annonce') }}
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ route('affichage') }}">
+                                     {{ __('Voir les annonces') }}
+                                </a></li>
+
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('affichage') }}">
-                                <img src="https://img.icons8.com/ios/30/000000/paper.png "/>
-                                 {{ __('Voir les annonces') }}
-                            </a>
-                        </li>
+
+
 
                         @guest
 
@@ -115,7 +118,6 @@
                             @endif
 
                             @else
-
 
                                 @if(Auth::user()->isAdmin)
 
@@ -141,7 +143,15 @@
                                     </a>
                                 </li>
 
+                                @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('gerer') }}">
+                                        <img src="https://img.icons8.com/ios/30/000000/two-tickets.png "/>
+                                         {{ __('Gérer la reservation') }}
+                                    </a>
+                                </li>
                                 @endif
+
 
                                 <li class="nav-item dropdown">
 

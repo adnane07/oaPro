@@ -42,7 +42,7 @@ Route::prefix('sup')->middleware('auth','isAdmin')->group(function(){
 
     Route::post('/add', [App\Http\Controllers\addController::class, 'ajouter'])->name('add');
     Route::get('/edit', [App\Http\Controllers\addController::class, 'index'])->name('edit');
-    
+
 });
 
 
@@ -84,19 +84,19 @@ Route::get('/uploadpdf',function () {
 
     $reservation = DB::table('Reservation')->where('planningId', $planningId)->first();
 
-    //     $data["email"] = "elakhaladnane.07@gmail.com";
-    //     $data["title"] = "votre reçu de reservation OASIS";
-    //     $data["body"] = "this is demo";
+        $data["email"] = $reservation->email;
+        $data["title"] = "votre reçu de reservation OASIS";
+        $data["body"] = "this is demo";
 
-    // $pdf = PDF::loadView('hello',$data);
+    $pdf = PDF::loadView('hello',$data);
 
-    // Mail::send('pdf', $data , function($message)use($data , $pdf){
+    Mail::send('pdf', $data , function($message)use($data , $pdf){
 
-    //     $message->to($data["email"])
-    //             ->subject($data["title"])
-    //             ->attachData($pdf->output(), "RecapilatifReserve.pdf");
+        $message->to($data["email"])
+                ->subject($data["title"])
+                ->attachData($pdf->output(), "RecapilatifReserve.pdf");
 
-    // });
+    });
 
     return view('uploadpdf',compact('reservation'));
 })->name('uploadpdf');
