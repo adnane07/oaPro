@@ -107,7 +107,7 @@
 <form method="POST" action="{{route ('annonce.delete',$annonce->id)}}">
   @csrf
   @method('DELETE')
-<div class="modal fade  " id="supprimerModal{{$annonce->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="supprimerModal{{$annonce->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
     <div class="modal-body">

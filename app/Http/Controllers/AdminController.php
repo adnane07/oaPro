@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class AdminController extends Controller
 {
@@ -20,16 +23,30 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-        $validated = $request->validate([
-        "date" => 'required',
-        ]);
+        // $validated = $request->validate([
+        // "date" => 'required',
+        // ]);
 
         $search = [
-            "date" => request('date')];
+            "date" => request('date'),
+        "name" => request('name')];
 
-        $listereserver = DB::table('Reservation')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
 
-            return view('admin',compact('search'),['reservers' => $listereserver]);
+        if(empty($search["date"])&&(empty($search["date"]))){
+            return redirect()->back()->with('fail','Les champs date et nom sont obligatoire.');
+        }
+        if(empty($search["name"]))
+            {$listereserver = DB::table('Reservation')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
+
+            return view('admin',compact('search'),['reservers' => $listereserver]);}
+        if(empty($search["date"]))
+            {$listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->orderBy('heureDepart')->get();
+
+            return view('admin',compact('search'),['reservers' => $listereserver]);}
+        else{
+            $listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
+
+            return view('admin',compact('search'),['reservers' => $listereserver]);}
 
     }
 
@@ -52,8 +69,22 @@ class AdminController extends Controller
 
     public function supprime($id)
     {
+        $res=Reservation::find($id);
+
+            $data["email"] = $res->email;
+            $data["title"] = "votre reservation OASIS a été annulé";
+            $data["body"] = "this is demo";
+
+
+        Mail::send('mailsuppnotif', $data , function($message)use($data){
+
+            $message->to($data["email"])
+                    ->subject($data["title"]);
+
+        });
         $res=Reservation::find($id)->delete();
-        if ($res){
+        if($res){
+
            return redirect()->back()->with('supprime','reservation bien supprimer');
         }
         else{

@@ -7,7 +7,7 @@
     <div class="container" style="margin-top: 1%; ">
         <div class="row justify-content-center">
             <div class="alert alert-warning col-md-9">
-                       Chers clients, merci d'honorer votre réservation, et de vous présenter 15 min avant le début de votre match.
+                Chers clients, merci d'honorer votre réservation, et de vous présenter 15 min avant le début de votre match.
             </div>
 
         </div>
@@ -58,7 +58,8 @@
                                   <div class="modal-body">
 
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="inpu" required placeholder="nom" name="name-r">
+                                        <input type="text" class="form-control" id="inpu" pattern="[a-zA-Z\s]{3,20}"
+                                        title="verifier votre nom" required placeholder="nom" name="name-r">
                                         <label for="floatingInput">Nom</label>
                                     </div>
 
@@ -68,7 +69,7 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="inpu" value="+212 " required placeholder="+212 6 ...." name="tel-r">
+                                        <input type="tel" class="form-control" id="inpu" pattern="0[0-9]{9}" title="verifier votre numero de téléphone" required placeholder="+212 6 ...." name="tel-r">
                                         <label for="floatingInput">N Tel</label>
                                     </div>
 
@@ -146,22 +147,28 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                       <div class="modal-body">
+                        <div id="msg_erreur"></div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="inpu" required placeholder="nom" name="name-r">
+                            <input type="text" class="form-control" id="inpu" pattern="[a-zA-Z\s]{3,20}"
+                            title="verifier votre nom"
+                             required placeholder="nom" name="name-r">
+
                             <label for="floatingInput">Nom</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="prix" class="form-control" id="inpu" required placeholder="name@example.com" name="email-r">
+                            <input type="email" class="form-control" id="inpu" required placeholder="name@example.com" name="email-r">
                             <label for="floatingInput">Adresse E-mail</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="inpu" value="+212 " required placeholder="+212 6 ...." name="tel-r">
-                            <label for="floatingInput">N Tel</label>
-                        </div>
+                            <input class="form-control" required id="inpu"
+                                 placeholder="+212 6 ...." name="tel-r" type="text" pattern="0[0-9]{9}" title="verifier votre numero de téléphone">
 
+                            <label for="floatingInput">N Tel</label>
+
+                        </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>

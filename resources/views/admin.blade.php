@@ -28,7 +28,7 @@
             <div class="alert alert-success">{{session('confirme')}}</div>
         @endif
 
-            
+
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#search">
@@ -41,18 +41,24 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-body">
-                    
+
+                    <div class="col-md-6 offset-md-3 row mb-3">
+                    <input type="text" id="inpu"
+                    class="form-control" name="name"
+                    placeholder="entrer un nom">
+                </div>
+
                     <div class="col-md-6 offset-md-3 row mb-3">
                         <input type="datetime"
                         class="form-control" name="date"
                         required
                         placeholder="selectionner une date">
                     </div>
-                  
+
                     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
                     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
                     <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
-            
+
                     <script>
                        flatpickr("input[type=datetime]",
                        {
@@ -65,7 +71,7 @@
                            maxDate: new Date().fp_incr(7)
                         });
                     </script>
-                    
+
                   </div>
                   <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary">Annuler</button>
@@ -100,12 +106,12 @@
             <td style="vertical-align: middle; text-align: center">{{$reserver->dateReservation}} {{$reserver->heureDepart}}-{{$reserver->heureFin}}</td>
             <td >
               <div style=" text-align: center">
-              @if($reserver->isConfirmed == 0)
+              {{-- @if($reserver->isConfirmed == 0)
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmerModal{{$reserver->id}}">
                     <i class="bi bi-check2-square"></i>
                 </button>
-              @endif
+              @endif --}}
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#supprimerModal{{$reserver->id}}">
                     <i class="bi bi-trash3"></i>
@@ -113,7 +119,7 @@
               </div>
 
             <!-- Modal annulation-->
-            <form method="POST" action="{{url('supprime/'.$reserver->id)}}">
+            <form method="POST" action="{{url('sup/supprime/'.$reserver->id)}}">
                 @csrf
              <div class="modal fade" id="supprimerModal{{$reserver->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -132,7 +138,7 @@
              </div>
             </form>
 
-            <!-- Modal confirmation -->
+            {{-- <!-- Modal confirmation -->
             <form method="POST" action="{{url('confirme/'.$reserver->id)}}">
                 @csrf
              <div class="modal fade" id="confirmerModal{{$reserver->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,13 +156,13 @@
                 </div>
               </div>
              </div>
-            </form>
+            </form> --}}
 
             </td>
 
         </tr>
      @endforeach
-    @else 
+    @else
      <tr>
         <td colspan="5" style="text-align: center; color: #ff4136;">Pas de reservation trouvés </td>
      </tr>
