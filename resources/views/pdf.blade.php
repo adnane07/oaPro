@@ -79,3 +79,7 @@
     </div>
 </body>
 </html>
+
+<?php 
+$planningId = Cookie::forget('planningId');
+?>

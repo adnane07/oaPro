@@ -18,7 +18,7 @@ class Controller extends BaseController
 
     public function dispo(Request $request)
     {
-        
+
         $validated = $request->validate([
         "date" => 'required',
         ]);
@@ -33,5 +33,5 @@ class Controller extends BaseController
 
     }
 
-   
+
 }
