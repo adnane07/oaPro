@@ -64,12 +64,14 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="prix" class="form-control" id="inpu" required placeholder="name@example.com" name="email-r">
+                                        <input type="email" class="form-control" id="inpu" required placeholder="name@example.com" name="email-r">
                                         <label for="floatingInput">Adresse E-mail</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
+
                                         <input type="tel" class="form-control" id="inpu" pattern="0[0-9]{9}" title="verifier votre numero de téléphone" required placeholder="+212 6 ...." name="tel-r">
+
                                         <label for="floatingInput">N Tel</label>
                                     </div>
 
@@ -163,6 +165,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
+
                             <input class="form-control" required id="inpu"
                                  placeholder="+212 6 ...." name="tel-r" type="text" pattern="0[0-9]{9}" title="verifier votre numero de téléphone">
 

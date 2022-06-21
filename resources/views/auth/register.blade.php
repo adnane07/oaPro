@@ -17,7 +17,8 @@
 
                                 <input type="text" id="email"
                              class="form-control border-0 @error('name') is-invalid @enderror"
-                             placeholder="name@example.com" name="name" value="{{ old('name') }}"
+                             placeholder="name@example.com" pattern="[a-zA-Z\s]{3,20}"
+                              name="name" value="{{ old('name') }}"
                              required autocomplete="name" autofocus>
 
                              <label for="name" id="emaill">{{ __('Nom') }}</label>
