@@ -18,7 +18,7 @@ class ReservationController extends Controller
             "name" => request('name-r'),
             "email" => request('email-r'),
             "tel" => request('tel-r')];
-
+                
             $reservation = [
 
             'name' => $details['name'],
@@ -30,7 +30,7 @@ class ReservationController extends Controller
             'idTerrain' => $terrain,
             'planningId' => $id.$terrain.$date];
 
-
+            
         Reservation::create([
 
             'name' => $details['name'],
