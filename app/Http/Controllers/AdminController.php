@@ -32,13 +32,14 @@ class AdminController extends Controller
         "name" => request('name')];
 
 
-        if(empty($search["date"])&&(empty($search["date"]))){
+        if((empty($search["name"]))&&(empty($search["date"]))){
             return redirect()->back()->with('fail','Les champs date et nom sont obligatoire.');
         }
         if(empty($search["name"]))
             {$listereserver = DB::table('Reservation')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
 
             return view('admin',compact('search'),['reservers' => $listereserver]);}
+
         if(empty($search["date"]))
             {$listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->orderBy('heureDepart')->get();
 
@@ -85,10 +86,10 @@ class AdminController extends Controller
         $res=Reservation::find($id)->delete();
         if($res){
 
-           return redirect()->back()->with('supprime','reservation bien supprimer');
+           return redirect('sup/admin')->with('supprime','reservation bien supprimer');
         }
         else{
-            return redirect()->back()->with('fail','reservation non supprimer');
+            return redirect('sup/admin')->with('fail','reservation non supprimer');
         }
 
     }
