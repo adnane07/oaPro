@@ -66,7 +66,6 @@
                            altFormat: "D j F Y",
                            disableMobile: "true",
                            dateFormat: "Y-m-d",
-                           minDate: "today",
                            maxDate: new Date().fp_incr(7)
                         });
                     </script>
@@ -118,7 +117,7 @@
               </div>
 
             <!-- Modal annulation-->
-            <form method="POST" action="{{url('supprime/'.$reserver->id)}}">
+            <form method="POST" action="{{url('sup/supprime/'.$reserver->id)}}">
                 @csrf
              <div class="modal fade" id="supprimerModal{{$reserver->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
