@@ -51,7 +51,6 @@
                     <div class="col-md-6 offset-md-3 row mb-3">
                         <input type="datetime"
                         class="form-control" name="date"
-                        required
                         placeholder="selectionner une date">
                     </div>
 
