@@ -90,9 +90,9 @@ Route::get('/uploadpdf',function () {
         $data["title"] = "votre reçu de reservation OASIS";
         $data["body"] = "this is demo";
 
-    $pdf = PDF::loadView('hello',$data);
+    $pdf = PDF::loadView('pdf',$data);
 
-    Mail::send('pdf', $data , function($message)use($data , $pdf){
+    Mail::send('hello', $data , function($message)use($data , $pdf){
 
         $message->to($data["email"])
                 ->subject($data["title"])

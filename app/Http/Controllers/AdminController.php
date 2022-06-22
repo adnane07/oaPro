@@ -36,16 +36,16 @@ class AdminController extends Controller
             return redirect()->back()->with('fail','Les champs date et nom sont obligatoire.');
         }
         if(empty($search["name"]))
-            {$listereserver = DB::table('Reservation')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
+            {$listereserver = DB::table('Reservation')->where('dateReservation', $search["date"])->orderBy('dateReservation')->orderBy('heureDepart')->get();
 
             return view('admin',compact('search'),['reservers' => $listereserver]);}
 
         if(empty($search["date"]))
-            {$listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->orderBy('heureDepart')->get();
+            {$listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->orderBy('dateReservation')->orderBy('heureDepart')->get();
 
             return view('admin',compact('search'),['reservers' => $listereserver]);}
         else{
-            $listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->where('dateReservation', $search["date"])->orderBy('heureDepart')->get();
+            $listereserver = DB::table('Reservation')->where('name', 'LIKE','%'.$search["name"].'%')->where('dateReservation', $search["date"])->orderBy('dateReservation')->orderBy('heureDepart')->get();
 
             return view('admin',compact('search'),['reservers' => $listereserver]);}
 
