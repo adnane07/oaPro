@@ -16,6 +16,7 @@
                     </div>
                     @endif
     </div>
+    @if(!$annonces->isEmpty())
     @foreach($annonces as $annonce)
     <div class="row justify-content-center">
       <div class="col-md-9 ">
@@ -141,6 +142,17 @@
 
 {{-- <br> --}}
   @endforeach
+  @else
+  <div class="row justify-content-center">
+    <div class="col-md-9 ">
+
+<div class="card mb-3">
+
+
+  <div class="card-header" style=" background-color:rgb(209, 236, 206)">
+    aucune annonces n'est disponible
+  </div></div></div></div>
+  @endif
 
   {{-- @endforeach --}}
 {{-- pagination --}}
