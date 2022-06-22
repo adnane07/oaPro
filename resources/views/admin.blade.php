@@ -119,7 +119,7 @@
               </div>
 
             <!-- Modal annulation-->
-            <form method="POST" action="{{url('sup/supprime/'.$reserver->id)}}">
+            <form method="POST" action="{{url('supprime/'.$reserver->id)}}">
                 @csrf
              <div class="modal fade" id="supprimerModal{{$reserver->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
