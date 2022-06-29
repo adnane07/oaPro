@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         // $validated = $request->validate([
         // "date" => 'required',
-        // ]);
+        // ]);kk
 
         $search = [
             "date" => request('date'),
