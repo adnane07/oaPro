@@ -13,7 +13,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
-    //
+
     public function index()
     {
         $listereserver = DB::table('Reservation')->whereRaw('Date(dateReservation) >= CURDATE()')->whereRaw('Date(dateReservation) <= (CURDATE()+7)')->orderBy('dateReservation')->orderBy('heureDepart')->get();
